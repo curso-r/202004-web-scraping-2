@@ -13,7 +13,9 @@ output:
 ---
 
 ```{r setup, include=FALSE}
+library(magrittr)
 options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(comment = "#>")
 ```
 
 ```{r xaringan-themer, include=FALSE}
@@ -21,7 +23,136 @@ library(xaringanthemer)
 mono_light(
   base_color = "#1c5253",
   header_font_google = google_font("Arvo"),
-  text_font_google   = google_font("Montserrat", "400", "400i"),
+  text_font_google   = google_font("Montserrat", "400", "500"),
+  text_font_size     = "24px",
   code_font_google   = google_font("Droid Mono")
 )
+```
+
+class: inverse, center, middle
+# Selenium
+
+---
+# O que é Selenium?
+
+- Selenium é uma ferramenta que permite **automatizar um navegador**!
+
+- Suporta alguns _backends_ diferentes: docker, phantomjs, firefox, chrome, etc.
+
+- Diferentemente do web scraping normal, não precisamos nos preocupar com
+nenhuma requisição HTTP
+
+  - O Selenium literalmente cria um navegador invisível para o qual você pode
+  passar as **ações** a serem tomadas
+  
+  - Por ser uma sessão interativa, não há dificuldades em exibir conteúdo
+  dinâmico
+
+  - Não é necessário compreender o _networking_ do site: tudo é _headless_
+  
+---
+# Por que não usá-lo sempre?
+
+- Vantagens:
+
+  - Fácil de entender
+  
+  - Permite raspar dados dinâmicos
+  
+  - Permite _screen shots_
+
+- Desvantagens:
+  
+  - Lento e de difícil paralelização
+  
+  - Bastante sensível
+  
+  - `RSelenium` está **completamente quebrado**
+
+---
+# WebDriver
+
+- Não existe uma diferença real entre "Selenium" e "WebDriver"
+
+  - O nome correto da ferramenta é Selenium WebDriver
+
+- A diferença está no R: pacotes `RSelenium` e `webdriver`
+
+  - `RSelenium` essencialmente não funciona
+  
+  - `webdriver` foi feito pela própria RStudio para resolver o problema
+
+- O `webdriver` funciona somente com o PhantomJS, mas isso não é necessariamente
+um problema
+
+- Instalar é fácil, fazer funcionar é mais ainda
+
+---
+# PhantomJS
+
+- O PhantomJS é um navegador _headless_ baseado em JavaScript feito
+especificamente para interação automatizada com páginas da web
+
+```{r}
+library(webdriver)
+# webdriver::install_phantomjs()
+
+pjs <- run_phantomjs()
+pjs
+ses <- Session$new(port = pjs$port)
+```
+
+---
+# Exemplo mínimo
+
+```{r, echo=FALSE, warning=FALSE}
+arq <- tempfile(fileext = ".png")
+on.exit(file.remove(arq))
+```
+
+```{r}
+ses$go("https://google.com")
+ses$takeScreenshot(file = arq)
+```
+
+```{r, echo=FALSE, fig.align='center'}
+arq %>%
+  magick::image_read() %>%
+  magick::image_crop("x600") %>%
+  magick::image_resize("450x")
+```
+
+---
+# Exercício (eu)
+
+```{r, eval=FALSE}
+xp <- "https://institucional.xpi.com.br/investimentos/fundos-de-investimento"
+ses$go(paste0(xp, "/lista-de-fundos-de-investimento.aspx"))
+
+write_file(ses$getSource(), arq)
+```
+
+---
+# Exercício (nós)
+
+```{r, eval=FALSE}
+elem <- ses$findElement(xpath = '//a[@href="#referenciado"]')
+elem$click()
+
+write_file(ses$getSource(), arq)
+```
+
+
+---
+# Exercício (vocês)
+
+```{r, eval=FALSE}
+tab <- '//div[@id="tableTodosClassification"]/span/select'
+
+elem <- ses$findElement(xpath = tab)
+elem$click()
+elem$sendKeys(key$arrowdown)
+elem$sendKeys(key$enter)
+
+write_file(ses$getSource(), arq)
 ```
