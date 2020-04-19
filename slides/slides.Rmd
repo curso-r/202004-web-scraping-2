@@ -37,6 +37,7 @@ class: inverse, center, middle
 
 ```{r}
 library(xml2)
+library(httr)
 library(purrr)
 ```
 
@@ -538,8 +539,8 @@ da lista de seleções.
 --
 
 ```{r}
-tab <- "//span[@class='filter_column filter_select']/select"
-opt <- paste0(tab, "/option[@value='5']")
+tab <- "//div[@id='tableReferenciadoRisk']"
+opt <- paste0(tab, "/span/select/option[@value='5']")
 
 elem <- ses$findElement(xpath = tab)
 elem$click()
@@ -640,4 +641,223 @@ arq %>%
   magick::image_read() %>%
   magick::image_crop("x700") %>%
   magick::image_resize("500x")
+```
+
+---
+class: inverse, center, middle
+# Miscelânea
+
+---
+# O DEJT
+
+- O Diário Eletrônico da Justiça do Trabalho é publicado (quase) todo dia e
+contém todas as movimentações de vários tribunais do trabalho
+
+- O nosso objetivo é baixar o PDF do diário para um dia específico
+
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("static/trt.png")
+```
+
+---
+# A busca
+
+- Para buscar os diários de um dia, basta entrar no site e escolher o dia
+correspondente
+
+- Analisando o POST, vemos que não há muita dificuldade em reproduzir a
+requisição
+
+```{r, echo=FALSE, dpi = 120, fig.align='center'}
+knitr::include_graphics("static/form.png")
+```
+
+---
+# Requisição da busca
+
+```{r}
+body <- list(
+  "corpo:formulario:dataIni" = "17/04/2020",
+  "corpo:formulario:dataFim" = "17/04/2020",
+  "corpo:formulario:tipoCaderno" = "",
+  "corpo:formulario:tribunal" = "",
+  "corpo:formulario:ordenacaoPlc" = "",
+  "navDe" = "",
+  "detCorrPlc" = "",
+  "tabCorrPlc" = "",
+  "detCorrPlcPaginado" = "",
+  "exibeEdDocPlc" = "",
+  "indExcDetPlc" = "",
+  "org.apache.myfaces.trinidad.faces.FORM" = "corpo:formulario",
+  "_noJavaScript" = "false",
+  "javax.faces.ViewState" = "!-m1ev0wvfu",
+  "source" = "corpo:formulario:botaoAcaoPesquisar"
+)
+```
+
+---
+# Reproduzindo a busca
+
+```{r, error=TRUE}
+url <- "https://dejt.jt.jus.br/dejt/f/n/diariocon"
+POST(url, body = body)
+```
+
+- A primeira tentativa não funcionou por causa de um erro no certificado SSL
+
+- SSL é o nome antigo para TLS (_Transport Layer Security_), uma ferramenta que
+permite que exista o HTTPS
+
+  - HTTPS é a versão secura e criptografada do HTTP, o protocolo da _web_
+  
+- Essencialmente, isso quer dizer que a página do DEJT tem vulnerabilidade
+
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("static/lock.png")
+```
+
+---
+# Reproduzindo a busca 2
+
+```{r}
+resp <- POST(
+  url, body = body,
+  config(ssl_verifypeer = FALSE)
+)
+length(resp$content)
+```
+
+- Apesar de a consulta ter funcionado, o tamanho da resposta (16kB) não está nem
+próximo do esperado
+
+- Isso ocorre porque a página espera um POST do tipo formulário
+
+  - A única diferença é o formato em que os dados serão enviados ao servidor
+
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("static/encoding.png")
+```
+
+---
+# Reproduzindo a busca 3
+
+```{r}
+resp <- POST(
+  url, body = body, encode = "form",
+  config(ssl_verifypeer = FALSE)
+)
+length(resp$content)
+```
+
+- Ainda sem sucesso, precisamos começar a conferir o formulário
+
+- Se saírmos da página e tentarmos copiar o POST de novo, notaremos que o
+Viewstate mudou
+
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("static/viewstate.png")
+```
+
+---
+# Viewstate
+
+- O JSF ViewState é um campo escondido que carrega consigo informações sobre o
+estado de uma sessão do navegador
+
+- Ele é capaz de indicar para a próxima página acessada o que tinha acontecido
+até aquele momento
+
+- No nosso caso o Viewstate é relevante apenas porque muitas páginas dependem
+dele para funcionar
+
+```{r}
+# Procurando o Viewstate na página anterior à busca
+viewstate <- url %>%
+  GET(config(ssl_verifypeer = FALSE)) %>%
+  content() %>%
+  xml_find_first('//input[@name="javax.faces.ViewState"]') %>%
+  xml_attr("value")
+```
+
+---
+# Reproduzindo a busca 4
+
+```{r}
+body$javax.faces.ViewState <- viewstate
+resp <- POST(
+  url, body = body, encode = "form",
+  config(ssl_verifypeer = FALSE)
+)
+length(resp$content)
+```
+
+- Agora que a resposta está correta, podemos continuar a raspagem da página sem
+mais problemas
+
+- Basta identificar como baixar cada um dos PDFs
+
+```{r, echo=FALSE, fig.align='center'}
+knitr::include_graphics("static/button.png")
+```
+
+---
+# Encontrando o PDF
+
+- Assim como outras páginas feitas com Java, grande parte dos elementos
+interativos do DEJT possui um identificador único
+
+- No nosso caso, precisamos encontrar o ID dos PDFs antes de poder baixá-los
+
+```{r}
+jid <- resp %>%
+  read_html() %>%
+  xml_find_all("//button") %>%
+  xml_attr("onclick") %>%
+  stringr::str_extract("(?<=plcLogicaItens:0:)j_id[0-9]+") %>%
+  extract(!is.na(.))
+```
+
+---
+# Requisição do PDF
+
+```{r}
+body2 <- list(
+  "corpo:formulario:dataIni" = "17/04/2020",
+  "corpo:formulario:dataFim" = "17/04/2020",
+  "corpo:formulario:tipoCaderno" = "",
+  "corpo:formulario:tribunal" = "",
+  "corpo:formulario:ordenacaoPlc" = "",
+  "navDe" = "",
+  "detCorrPlc" = "",
+  "tabCorrPlc" = "",
+  "detCorrPlcPaginado" = "",
+  "exibeEdDocPlc" = "",
+  "indExcDetPlc" = "",
+  "org.apache.myfaces.trinidad.faces.FORM" = "corpo:formulario",
+  "_noJavaScript" = "false",
+  "javax.faces.ViewState" = viewstate,
+  "source" = paste0("corpo:formulario:plcLogicaItens:0:", jid)
+)
+```
+
+---
+# Baixando o PDF
+
+```{r, echo=FALSE}
+arq <- tempfile(fileext = ".pdf")
+```
+
+- Baixar um PDF funciona da mesma forma que baixar um HTML para o disco do
+computador, basta utilizar a função `write_disk()`
+
+```{r}
+POST(
+  url, body = body2,
+  write_disk(arq, TRUE),
+  config(ssl_verifypeer = FALSE)
+)
+```
+
+```{r, echo=FALSE,}
+tr <- file.remove(arq)
 ```
