@@ -28,511 +28,158 @@ class: inverse, center, middle
 
 ```r
 library(xml2)
-```
-
----
-class: inverse, center, middle
-# Iteração
-
----
-# O fluxo do web scraping
-
-- Sempre que fazemos um web scraper é bom seguir um fluxo definido
-
-- Por enquanto já foram apresentados elementos da maior parte do passo-a-passo,
-mas nada foi dito sobre a iteração
-
-&lt;img src="static/cycle.png" width="707" style="display: block; margin: auto;" /&gt;
-
----
-# Por que iterar?
-
-- Dificilmente queremos fazer uma tarefa de web scraping uma vez só (senão
-bastaria baixar a página uma vez e raspá-la)
-
-- Podemos querer baixar muitas páginas de uma vez ou uma página a cada certo
-tempo
-
-- Iteração, tratamento de erros e automatização passam a ser relevantes
-
-  - O pacote `purrr` nos ajudará a iterar
-  
-  - O pacote `purrr` retornará para tratar qualquer erro que possa aparecer
-  
-  - O pacote `cronR` nos ajudará a agendar a execução de scripts
-
-- Se você estiver interessado em aprender mais, veja nosso curso de 
-[Deploy](https://www.curso-r.com/cursos/deploy/)
-
----
-# Iterar
-
-- Iteração é um padrão de programação extremamente comum que pode ser altamente
-abreviado
-
-
-```r
-nums &lt;- 1:10
-resp &lt;- c()
-for (i in seq_along(nums)) {
-  resp &lt;- c(resp, nums[i] + 1)
-}
-resp
-```
-
-```
-#&gt;  [1]  2  3  4  5  6  7  8  9 10 11
-```
-
-
-```r
 library(purrr)
-map_dbl(nums, ~.x + 1)
-```
-
-```
-#&gt;  [1]  2  3  4  5  6  7  8  9 10 11
-```
-
----
-# A função map
-
-- A função `map()` recebe um vetor ou uma lista de entrada e aplica uma função
-em cada elemento do mesmo
-
-- Podemos especificar o formato da saída com a família de funções `map_***()`
-
-- A função pode ser declarada externamente, internamente ou através de um
-_lambda_
-
-
-```r
-soma_um &lt;- function(x) {
-  x + 1
-}
-
-map(nums, soma_um)
-map(nums, function(x) x + 1)
-map(nums, ~.x + 1)
-```
-
----
-# Utilidade do map
-
-- Se tivermos uma lista de URLs, podemos iterar facilmente em todos sem abrir
-mão da síntaxe maravilhosa do Tidyverse
-
-
-```r
-library(xml2)
-urls &lt;- c(
-  "https://en.wikipedia.org/wiki/R_language",
-  "https://en.wikipedia.org/wiki/Python_(programming_language)"
-)
-
-urls %&gt;%
-  map(read_html) %&gt;%
-  map(xml_find_first, "//h1") %&gt;%
-  map_chr(xml_text)
-```
-
-```
-#&gt; [1] "R (programming language)"      "Python (programming language)"
-```
-
----
-# Tratando problemas
-
-- Ao repetir uma tarefa múltiplas vezes, não podemos garantir que toda execução
-funcione
-
-- O R já possui o `try()` e o `tryCatch()`, mas o `purrr` facilita ainda mais
-o trabalho
-
-
-```r
-maybe_read_html &lt;- possibly(read_html, NULL)
-
-read_html("https://errado.que")
-```
-
-```
-#&gt; Error in open.connection(x, "rb"): Could not resolve host: errado.que
-```
-
-```r
-maybe_read_html("https://errado.que")
-```
-
-```
-#&gt; NULL
-```
-
----
-# Agendamento
-
-- Infelizmente o pacote mais comum (`cronR`) não funciona no Windows, nele é
-necessário usar o `taskscheduleR`
-
-
-```r
-library(cronR)
-cmd &lt;- cron_rscript("CAMINHO PARA SCRIPT")
-
-cron_add(cmd, "daily", "00:00")
-cron_add(cmd, "daily", "14:20", days_of_week = c(0, 3, 5))
-cron_add(cmd, "monthly", "10:30", days_of_month = "first")
-cron_add(cmd, '@reboot')
-```
-
-- Também é possível utilizar uma interface interativa no RStudio em **Addins &gt;
-Schedule R scripts**
-
----
-# Exercício (eu)
-
-Na página da Wikipédia, encontrar o objeto correspondente à tabela lateral de
-informações. Pegar apenas os elementos correspondentes a links.
-
---
-
-
-```r
-links &lt;- "https://en.wikipedia.org/wiki/R_language" %&gt;%
-  read_html() %&gt;%
-  xml_find_all("//table[@class='infobox vevent']//a")
-
-head(links)
-```
-
-```
-#&gt; {xml_nodeset (6)}
-#&gt; [1] &lt;a href="/wiki/File:R_logo.svg" class="image"&gt;&lt;img alt="R logo.svg" src=" ...
-#&gt; [2] &lt;a href="/wiki/File:R_Terminal.png" class="image"&gt;&lt;img alt="R Terminal.pn ...
-#&gt; [3] &lt;a href="/wiki/Programming_paradigm" title="Programming paradigm"&gt;Paradig ...
-#&gt; [4] &lt;a href="/wiki/Multi-paradigm_programming_language" class="mw-redirect" t ...
-#&gt; [5] &lt;a href="/wiki/Array_programming" title="Array programming"&gt;Array&lt;/a&gt;
-#&gt; [6] &lt;a href="/wiki/Object-oriented_programming" title="Object-oriented progra ...
-```
-
----
-# Exercício (nós)
-
-Extrair todos os URLs dos links e completá-los com o resto do caminho da
-Wikipédia. Continuar usando apenas _pipes_.
-
---
-
-
-```r
-urls &lt;- "https://en.wikipedia.org/wiki/R_language" %&gt;%
-  read_html() %&gt;%
-  xml_find_all("//table[@class='infobox vevent']//a") %&gt;%
-  xml_attr("href") %&gt;%
-  paste0("https://en.wikipedia.org", .)
-
-head(urls)
-```
-
-```
-#&gt; [1] "https://en.wikipedia.org/wiki/File:R_logo.svg"                    
-#&gt; [2] "https://en.wikipedia.org/wiki/File:R_Terminal.png"                
-#&gt; [3] "https://en.wikipedia.org/wiki/Programming_paradigm"               
-#&gt; [4] "https://en.wikipedia.org/wiki/Multi-paradigm_programming_language"
-#&gt; [5] "https://en.wikipedia.org/wiki/Array_programming"                  
-#&gt; [6] "https://en.wikipedia.org/wiki/Object-oriented_programming"
-```
-
----
-# Exercício (vocês)
-
-Baixar todas as páginas da Wikipédia. Dicas: use `possibly()` para impedir erros
-quando o URL for inválido; procure saber sobre a função `map2()` para iterar em
-mais de uma lista; salve os arquivos com `GET(..., write_disk(path))`.
-
-
-
---
-
-
-```r
-library(httr)
-paths &lt;- paste0(dir, seq_along(urls), ".html")
-
-maybe_get &lt;- function(url, path) {
-  possibly(GET, NULL)(url, write_disk(path))
-}
-
-out &lt;- map2(urls, paths, maybe_get)
-length(compact(out))
-```
-
-```
-#&gt; [1] 32
 ```
 
 ---
 class: inverse, center, middle
-# Selenium
+# Paralelismo
 
 ---
-# O que é Selenium?
+# O que isso significa?
 
-- Selenium é uma ferramenta que permite **automatizar um navegador**!
+- Antigamente, computadores eram capazes de executar apenas uma sequência de
+comandos por vez
 
-- Suporta alguns _backends_ diferentes: PhantomJS, Firefox, Chrome, etc.
+- Avanços tecnológicos permitiram que o processador fosse capaz de fazer
+"malabarismo" com diversos processos
 
-- Diferentemente do web scraping normal, não precisamos nos preocupar com
-nenhuma requisição HTTP
+- Paralelismo (ou multiprocessamento) chegou apenas com os primeiros _dual-core_
 
-  - O Selenium literalmente cria um navegador invisível para o qual você pode
-  passar as **ações** a serem tomadas
-  
-  - Por ser uma sessão interativa, não há dificuldades em exibir conteúdo
-  dinâmico
-
-  - Não é necessário compreender o _networking_ do site: tudo é _headless_
-  
----
-# Por que não usá-lo sempre?
-
-- Vantagens:
-
-  - Fácil de entender
-  
-  - Permite raspar dados dinâmicos
-  
-  - Permite _screen shots_
-
-- Desvantagens:
-  
-  - Lento e de difícil paralelização
-  
-  - Bastante sensível
-  
-  - `RSelenium` está **completamente quebrado**
+&lt;img src="static/cores.png" width="327" style="display: block; margin: auto;" /&gt;
 
 ---
-# WebDriver
+# Em mais detalhes
 
-- Não existe uma diferença real entre "Selenium" e "WebDriver"
+- A unidade de processamento central pode ter mais de um **núcleo**
+(_multicore_)
 
-  - O nome correto da ferramenta é Selenium WebDriver
+- Um **processo** é composto por uma sequência de comandos ou tarefas
 
-- A diferença está no R: pacotes `RSelenium` e `webdriver`
+- Cada núcleo consegue executar apenas um **comando** por vez
 
-  - `RSelenium` essencialmente não funciona
-  
-  - `webdriver` foi feito pela própria RStudio para resolver o problema
+- Os comandos de um processo podem ser interrompidos para que sejam executados
+os de outro (_multitasking_)
 
-- O `webdriver` funciona somente com o PhantomJS, mas isso não é necessariamente
-um problema
+- O computador pode executar várias tarefas simultaneamente escalonando os
+comandos para seus diferentes núcleos (_multithreading_)
 
-- Instalar é fácil, fazer funcionar é mais ainda
-
----
-# PhantomJS
-
-- O PhantomJS é um navegador _headless_ baseado em JavaScript feito
-especificamente para interação automatizada com páginas da web
-
-
-```r
-library(webdriver)
-# webdriver::install_phantomjs()
-
-pjs &lt;- run_phantomjs()
-pjs
-```
-
-```
-#&gt; $process
-#&gt; PROCESS 'phantomjs', running, pid 10671.
-#&gt; 
-#&gt; $port
-#&gt; [1] 8080
-```
-
-```r
-ses &lt;- Session$new(port = pjs$port)
-```
+- Muitos computadores possuem **núcleos vírtuais**, permitindo dois comandos por
+vez em cada núcleo (_hyperthreading_)
 
 ---
 # Exemplo mínimo
 
-
-
-
-```r
-ses$go("https://google.com")
-ses$takeScreenshot(file = arq)
-```
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-16-1.png" width="600" style="display: block; margin: auto;" /&gt;
-
----
-# Elementos
-
-- `ses$findElement()` retorna um elemento da página dado um seletor ou XPath
-para o mesmo
-
-  - É uma função embutida na sessão (assim como `takeScreenshot()` e `go()`)
-
-- `elem$click()` clica em um elemento, enquanto `elem$sendKeys()` "envia" uma
-tecla para o elemento
-
-  - São funções embutidas no elemento retornado por `findElement()`
-
-  - A lista `key` contém uma série de teclas que podem ser enviadas (como ENTER,
-  etc.)
-  
-  - Ao invés de `elem$sendKeys()` podemos usar `elem$setValue()` para escrever
-  um texto no elemento caso isso seja possível
-
----
-# Exercício (eu)
-
-Encontrar a página de Fundos de Investimento da XP. Criar uma sessão `webdriver`
-para ir até esta página.
-
---
+O pacote `parallel` já vem instalado junto com o R e consegue rodar comandos
+paralelamente tanto no Windows quanto em outros sistemas. Por padrão, ele quebra
+a tarefa em 2.
 
 
 ```r
-xp &lt;- paste0(
-  "https://institucional.xpi.com.br/investimentos/",
-  "fundos-de-investimento",
-  "/lista-de-fundos-de-investimento.aspx"
+library(parallel)
+library(microbenchmark)
+
+microbenchmark(
+  seq = map_dbl(1:10000, function(x) x + 1),
+  par = mclapply(1:10000, function(x) x + 1)
 )
-ses$go(xp)
-ses$takeScreenshot(file = arq)
+```
+
+```
+#&gt; Unit: milliseconds
+#&gt;  expr       min        lq     mean   median      uq      max neval
+#&gt;   seq  7.656848  9.365536 10.90817 10.22909 11.6608 18.53666   100
+#&gt;   par 20.279427 22.716842 25.63977 24.23514 26.3415 47.49967   100
+```
+
+---
+# Futuros
+
+- O pacote `future` expande o pacote `parallel`, permitindo o descolamento de
+tarefas da sessão principal
+
+  - Ele pode operar em 2 níveis: _multicore_ e _multissession_
+  
+- Em cima do `future`, for construído o `furrr` com o objetivo de emular a
+síntaxe do `purrr` para processamento paralelo
+
+- Diferentemente do `parallel`, o `future` é capaz de descobrir sozinho o número
+de núcleos virtuais do computador
+
+
+```r
+library(future)
+availableCores()
+```
+
+```
+#&gt; system 
+#&gt;      8
 ```
 
 ---
 # Exercício (eu)
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-18-1.png" width="667" style="display: block; margin: auto;" /&gt;
-
----
-# Exercício (nós)
-
-Fazer a sessão `webdriver` clicar na aba "Internacional" no topo da página.
+Estabelecer um plano de execução paralela com a função `plan()`. Entender a
+diferença entre todos os planos disponíveis.
 
 --
 
 
 ```r
-elem &lt;- ses$findElement(xpath = '//a[@href="#referenciado"]')
-elem$click()
-Sys.sleep(2)
-ses$takeScreenshot(file = arq)
+plan(multiprocess)
 ```
+
+- `sequential`: não executa em paralelo, útil para testes
+
+- `multicore`: mais eficiente, não funciona no Windows nem dentro do RStudio
+
+- `multisession`: abre novas sessões do R, mais pesado para o computador
+
+- `multiprocess`: escolhe o melhor entre `multicore` e `multisession`
 
 ---
 # Exercício (nós)
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-20-1.png" width="667" style="display: block; margin: auto;" /&gt;
+Criar uma função que retorna o primeiro parágrafo de uma página da Wikipédia
+dado o fim de seu URL (como "/wiki/R\_language"). Dicas: textos são denotados
+pela _tag_ `&lt;p&gt;` em HTML; pule o elemento de classe "mw-empty-elt".
+
+
+```r
+download_wiki &lt;- function(url) {
+  url %&gt;%
+    paste0("https://en.wikipedia.org", .) %&gt;%
+    read_html() %&gt;%
+    xml_find_first("//p[not(@class='mw-empty-elt')]") %&gt;%
+    xml_text()
+}
+```
+
 
 ---
 # Exercício (vocês)
 
-Filtrar apenas os fundos de alto risco. Dica: podemos selecionar um elemento de
-uma lista com as setas do teclado (analizar `key`) ou podemos obter a estrutura
-da lista de seleções.
-
---
+Executar a função anterior em paralelo para todas as páginas baixadas no
+exercício de iteração. Dicas: utilize `future_map()` do pacote `furrr`; não se
+esqueça do `possibly()`"!
 
 
 ```r
-tab &lt;- "//span[@class='filter_column filter_select']/select"
-opt &lt;- paste0(tab, "/option[@value='5']")
+library(furrr)
 
-elem &lt;- ses$findElement(xpath = tab)
-elem$click()
-Sys.sleep(2)
-elem &lt;- ses$findElement(xpath = opt)
-elem$click()
+prgs &lt;- "https://en.wikipedia.org/wiki/R_language" %&gt;%
+  read_html() %&gt;%
+  xml_find_all("//table[@class='infobox vevent']//a") %&gt;%
+  xml_attr("href") %&gt;%
+  future_map(possibly(download_wiki, ""))
 
-ses$takeScreenshot(file = arq)
+prgs[[3]]
 ```
 
----
-# Exercício (vocês)
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-22-1.png" width="667" style="display: block; margin: auto;" /&gt;
-
----
-# Quer mais?
-
-- O PhantomJS, apesar de muito capaz, ainda não consegue exibir todo o conteúdo
-dinâmico de uma página
-
-- Para solucionar esse problema, é necessário usar o RSelenium com um navegador
-de verdade como backend
-
-  - Nem sempre a instalação do `RSelenium` funciona e em alguns sistemas
-  operacionais há outras dependências
-  
-  - A documentação do `RSelenium` está atrasadas, dificultando qualquer pesquisa
-  
-  - O método sugerido para utilizar navegadores externos depende do Docker,
-  um programa sem relação com o R
-  
-- Não use `RSelenium` caso não seja estritamente necessário!
-
----
-# Demonstração
-
-- As funções do `RSelenium` são parecidas com as do `webdriver`, mas envolvem um
-mais esforço
-
-- No exemplo abaixo, o `RSelenium` abre uma aba do Firefox no meu computador e
-executa todos os comandos ao vivo nela
-
-
-```r
-library(RSelenium)
-drv &lt;- rsDriver(browser = "firefox", verbose = FALSE)
-
-drv$client$navigate("https://google.com")
-elem &lt;- drv$client$findElement("xpath", "//input[@name='q']")
-elem$sendKeysToElement(list("ibovespa", key = "enter"))
-
-Sys.sleep(2)
-drv$client$screenshot(file = arq)
 ```
-
----
-# Demonstração
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-24-1.png" width="667" style="display: block; margin: auto;" /&gt;
-
----
-# Mas com o webdriver...
-
-- Note a presença do gráfico interativo na imagem anterior, isso não é possível
-com o `webdriver`
-
-- Pelas limitações do PhantomJS, nem todo elemento dinâmico pode ser renderizado
-na tela
-
-  - É possível usar o `webdriver` com Docker também, mas nesse caso é melhor
-  recorrer ao `RSelenium`
-
-
-```r
-ses$go("https://google.com")
-elem &lt;- ses$findElement(xpath = "//input[@name='q']")
-elem$sendKeys("ibovespa", key$enter)
-
-Sys.sleep(2)
-ses$takeScreenshot(file = arq)
+#&gt; [1] "Programming paradigms are a way to classify programming languages based on their features. Languages can be classified into multiple paradigms.\n"
 ```
-
----
-# Mas com o webdriver...
-
-&lt;img src="slides_files/figure-html/unnamed-chunk-26-1.png" width="667" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

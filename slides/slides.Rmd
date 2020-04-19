@@ -37,6 +37,7 @@ class: inverse, center, middle
 
 ```{r}
 library(xml2)
+library(purrr)
 ```
 
 ---
@@ -227,6 +228,141 @@ maybe_get <- function(url, path) {
 
 out <- map2(urls, paths, maybe_get)
 length(compact(out))
+```
+
+---
+class: inverse, center, middle
+# Paralelismo
+
+---
+# O que isso significa?
+
+- Antigamente, computadores eram capazes de executar apenas uma sequência de
+comandos por vez
+
+- Avanços tecnológicos permitiram que o processador fosse capaz de fazer
+"malabarismo" com diversos processos
+
+- Paralelismo (ou multiprocessamento) chegou apenas com os primeiros _dual-core_
+
+```{r, dpi = 110, fig.align='center', echo=FALSE}
+knitr::include_graphics("static/cores.png")
+```
+
+---
+# Em mais detalhes
+
+- A unidade de processamento central pode ter mais de um **núcleo**
+(_multicore_)
+
+- Um **processo** é composto por uma sequência de comandos ou tarefas
+
+- Cada núcleo consegue executar apenas um **comando** por vez
+
+- Os comandos de um processo podem ser interrompidos para que sejam executados
+os de outro (_multitasking_)
+
+- O computador pode executar várias tarefas simultaneamente escalonando os
+comandos para seus diferentes núcleos (_multithreading_)
+
+- Muitos computadores possuem **núcleos vírtuais**, permitindo dois comandos por
+vez em cada núcleo (_hyperthreading_)
+
+---
+# Exemplo mínimo
+
+O pacote `parallel` já vem instalado junto com o R e consegue rodar comandos
+paralelamente tanto no Windows quanto em outros sistemas. Por padrão, ele quebra
+a tarefa em 2.
+
+```{r}
+library(parallel)
+library(microbenchmark)
+
+microbenchmark(
+  seq = map_dbl(1:10000, function(x) x + 1),
+  par = mclapply(1:10000, function(x) x + 1)
+)
+```
+
+---
+# Futuros
+
+- O pacote `future` expande o pacote `parallel`, permitindo o descolamento de
+tarefas da sessão principal
+
+  - Ele pode operar em 2 níveis: _multicore_ e _multissession_
+  
+- Em cima do `future`, for construído o `furrr` com o objetivo de emular a
+síntaxe do `purrr` para processamento paralelo
+
+- Diferentemente do `parallel`, o `future` é capaz de descobrir sozinho o número
+de núcleos virtuais do computador
+
+```{r}
+library(future)
+availableCores()
+```
+
+---
+# Exercício (eu)
+
+Estabelecer um plano de execução paralela com a função `plan()`. Entender a
+diferença entre todos os planos disponíveis.
+
+--
+
+```{r, warning=FALSE, message=FALSE}
+plan(multiprocess)
+```
+
+- `sequential`: não executa em paralelo, útil para testes
+
+- `multicore`: mais eficiente, não funciona no Windows nem dentro do RStudio
+
+- `multisession`: abre novas sessões do R, mais pesado para o computador
+
+- `multiprocess`: escolhe o melhor entre `multicore` e `multisession`
+
+---
+# Exercício (nós)
+
+Criar uma função que retorna o primeiro parágrafo de uma página da Wikipédia
+dado o fim de seu URL (como "/wiki/R\_language"). Dicas: textos são denotados
+pela _tag_ `<p>` em HTML; pule o elemento de classe "mw-empty-elt".
+
+```{r}
+download_wiki <- function(url) {
+  url %>%
+    paste0("https://en.wikipedia.org", .) %>%
+    read_html() %>%
+    xml_find_first("//p[not(@class='mw-empty-elt')]") %>%
+    xml_text()
+}
+```
+
+
+---
+# Exercício (vocês)
+
+Executar a função anterior em paralelo para todas as páginas baixadas no
+exercício de iteração. Dicas: utilize `future_map()` do pacote `furrr`; não se
+esqueça do `possibly()`"!
+
+```{r, warning=FALSE, message=FALSE}
+library(furrr)
+
+prgs <- "https://en.wikipedia.org/wiki/R_language" %>%
+  read_html() %>%
+  xml_find_all("//table[@class='infobox vevent']//a") %>%
+  xml_attr("href") %>%
+  future_map(possibly(download_wiki, ""))
+
+prgs[[3]]
+```
+
+```{r, echo=FALSE}
+plan(sequential)
 ```
 
 ---
