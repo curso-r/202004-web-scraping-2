@@ -109,7 +109,6 @@ knitr::include_graphics("static/html_exemplo_3.png")
 atributos (`charset`, `style`, ...) mudam como essas seções são renderizadas pelo
 navegador
 
-
 ---
 # Introdução ao HTML
 
