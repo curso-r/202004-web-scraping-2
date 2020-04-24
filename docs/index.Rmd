@@ -1,6 +1,7 @@
 ---
-title: "Workshop Webscraping 2"
-subtitle: "2020-04-25"
+title: "Workshop: Web Scraping 2"
+author: "<img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>"
+date: "`r stringr::str_to_title(format(Sys.Date(), '%B, %Y'))`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -21,7 +22,7 @@ knitr::opts_chunk$set(comment = "#>")
 ```{r xaringan-themer, include=FALSE}
 library(xaringanthemer)
 mono_light(
-  base_color = "#1c5253", background_color = "#ffffff",
+  base_color = "#022038", background_color = "#ffffff",
   header_font_google = google_font("Arvo"),
   text_font_google   = google_font("Montserrat", "400", "500"),
   text_font_size     = "24px",
@@ -30,10 +31,54 @@ mono_light(
 ```
 
 class: inverse, center, middle
+# Apresentação
+
+---
+# Sobre a Curso-R
+
+```{r, echo=FALSE, dpi = 230, fig.align='center'}
+knitr::include_graphics("static/professores.png")
+```
+
+---
+# Linha do tempo
+
+```{r, echo=FALSE, fig.align='center', dpi=145}
+knitr::include_graphics("static/linha_do_tempo.png")
+```
+
+---
+# Nossos cursos
+
+```{r, echo=FALSE, fig.align='center', dpi=200}
+knitr::include_graphics("static/cursos.png")
+```
+
+---
+# Este curso
+
+- HTML + CSS + XPath
+
+- Iteração + tratamento de erros + agendamento
+
+- Paralelização + futuros
+
+- Selenium + WebDriver + PhantomJS
+
+- SSL + Viewstate + ...
+
+- Exercícios variados no estilo MUY:
+  
+  1. (eu) Conceitos/explicações
+  2. (nós) Exemplo
+  3. (vocês!) Exercício
+
+---
+class: inverse, center, middle
 # XPath
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 ```{r, echo = FALSE, dpi = 230, fig.align='center'}
 knitr::include_graphics("static/html_exemplo_1.png")
@@ -44,7 +89,7 @@ criação de páginas web. Por trás de todo site há pelo menos um arquivo `.ht
 
 ---
 
-# Introdução ao  HTML
+# Introdução ao HTML
 
 ```{r, echo = FALSE, dpi = 230, fig.align='center'}
 knitr::include_graphics("static/html_exemplo_2.png")
@@ -54,7 +99,7 @@ knitr::include_graphics("static/html_exemplo_2.png")
 da página: `head` são "metadados", enquanto `body` é o corpo da página
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 ```{r, echo = FALSE, dpi = 230, fig.align='center'}
 knitr::include_graphics("static/html_exemplo_3.png")
@@ -65,7 +110,7 @@ atributos (`charset`, `style`, ...) mudam como essas seções são renderizadas 
 navegador
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 - Todo HTML se transforma em um **DOM** (document object model) dentro do navegador.
 
@@ -82,14 +127,14 @@ navegador
 (*Extensible Markup Language*) que define regras para a codificação de um documento.
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 ```{r, echo = FALSE, dpi = 200, fig.align='center'}
 knitr::include_graphics("static/html_exemplo_tree.png")
 ```
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 ```{r, echo = FALSE, dpi = 200, fig.align='center'}
 knitr::include_graphics("static/html_exemplo_tree_paifilho.png")
@@ -206,6 +251,52 @@ rvest::html_nodes(html, ".azul")
 indica que estamos fazendo uma busca em qualquer tag.
 
 ---
+# Exercício (eu)
+
+Acesse o site de buscas [DuckDuckGo.com](https://duckduckgo.com). Baixe a página de
+buscas. Dica: use a função `httr::GET()`.
+
+--
+
+```{r}
+library(httr)
+GET("https://duckduckgo.com")
+```
+
+---
+# Exercício (nós)
+
+Examine o código-fonte da página para encontrar o elemento correspondente à
+caixa de busca e copie o seu XPath pelo navegador. Esse XPath é apropriado? Por
+que?
+
+--
+
+```
+//*[@id="search_form_input_homepage"]
+```
+
+Uma forma mais simples talvez fosse
+
+```
+//input[@name="q"]
+```
+
+---
+# Exercício (vocês)
+
+Examine a aba de rede do inspetor do seu navegador. Quando você faz uma busca,
+qual requisição corresponde à mesma? Reproduza essa requisição com o pacote
+`httr`. Dica: use o parâmetro `query` para enviar a requisição correta.
+
+--
+
+```{r}
+GET("https://duckduckgo.com", query = list(q = "R", t = "h_"))
+```
+
+
+---
 class: inverse, center, middle
 # Iteração
 
@@ -286,10 +377,9 @@ map(nums, ~.x + 1)
 # Utilidade do map
 
 - Se tivermos uma lista de URLs, podemos iterar facilmente em todos sem abrir
-mão da síntaxe maravilhosa do Tidyverse
+mão da sintaxe maravilhosa do Tidyverse
 
 ```{r}
-library(xml2)
 urls <- c(
   "https://en.wikipedia.org/wiki/R_language",
   "https://en.wikipedia.org/wiki/Python_(programming_language)"
@@ -384,7 +474,6 @@ dir <- paste0(tempdir(), "/")
 --
 
 ```{r}
-library(httr)
 paths <- paste0(dir, seq_along(urls), ".html")
 
 maybe_get <- function(url, path) {
@@ -430,7 +519,7 @@ os de outro (_multitasking_)
 - O computador pode executar várias tarefas simultaneamente escalonando os
 comandos para seus diferentes núcleos (_multithreading_)
 
-- Muitos computadores possuem **núcleos vírtuais**, permitindo dois comandos por
+- Muitos computadores possuem **núcleos virtuais**, permitindo dois comandos por
 vez em cada núcleo (_hyperthreading_)
 
 ---
@@ -459,7 +548,7 @@ tarefas da sessão principal
   - Ele pode operar em 2 níveis: _multicore_ e _multissession_
   
 - Em cima do `future`, for construído o `furrr` com o objetivo de emular a
-síntaxe do `purrr` para processamento paralelo
+sintaxe do `purrr` para processamento paralelo
 
 - Diferentemente do `parallel`, o `future` é capaz de descobrir sozinho o número
 de núcleos virtuais do computador
@@ -696,7 +785,7 @@ arq %>%
 # Exercício (vocês)
 
 Filtrar apenas os fundos de alto risco. Dica: podemos selecionar um elemento de
-uma lista com as setas do teclado (analizar `key`) ou podemos obter a estrutura
+uma lista com as setas do teclado (analisar `key`) ou podemos obter a estrutura
 da lista de seleções.
 
 --
@@ -866,6 +955,8 @@ url <- "https://dejt.jt.jus.br/dejt/f/n/diariocon"
 POST(url, body = body)
 ```
 
+--
+
 - A primeira tentativa não funcionou por causa de um erro no certificado SSL
 
 - SSL é o nome antigo para TLS (_Transport Layer Security_), uma ferramenta que
@@ -890,6 +981,8 @@ resp <- POST(
 length(resp$content)
 ```
 
+--
+
 - Apesar de a consulta ter funcionado, o tamanho da resposta (16kB) não está nem
 próximo do esperado
 
@@ -912,9 +1005,11 @@ resp <- POST(
 length(resp$content)
 ```
 
+--
+
 - Ainda sem sucesso, precisamos começar a conferir o formulário
 
-- Se saírmos da página e tentarmos copiar o POST de novo, notaremos que o
+- Se sairmos da página e tentarmos copiar o POST de novo, notaremos que o
 Viewstate mudou
 
 ```{r, echo=FALSE, fig.align='center'}
@@ -954,6 +1049,8 @@ resp <- POST(
 length(resp$content)
 ```
 
+--
+
 - Agora que a resposta está correta, podemos continuar a raspagem da página sem
 mais problemas
 
@@ -982,6 +1079,8 @@ jid <- resp %>%
 
 ---
 # Requisição do PDF
+
+--
 
 ```{r}
 body2 <- list(
@@ -1024,3 +1123,9 @@ POST(
 ```{r, echo=FALSE,}
 tr <- file.remove(arq)
 ```
+
+---
+class: inverse, center, middle
+# Fim
+
+(Parabéns!)

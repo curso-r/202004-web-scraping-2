@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Workshop Webscraping 2</title>
+    <title>Workshop: Web Scraping 2</title>
     <meta charset="utf-8" />
+    <meta name="author" content="" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Workshop Webscraping 2
-## 2020-04-25
+# Workshop: Web Scraping 2
+### <img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>
+### Abril, 2020
 
 ---
 
@@ -20,10 +22,48 @@ class: center, middle, inverse, title-slide
 
 
 class: inverse, center, middle
+# Apresentação
+
+---
+# Sobre a Curso-R
+
+&lt;img src="static/professores.png" width="700" style="display: block; margin: auto;" /&gt;
+
+---
+# Linha do tempo
+
+&lt;img src="static/linha_do_tempo.png" width="336" style="display: block; margin: auto;" /&gt;
+
+---
+# Nossos cursos
+
+&lt;img src="static/cursos.png" width="921" style="display: block; margin: auto;" /&gt;
+
+---
+# Este curso
+
+- HTML + CSS + XPath
+
+- Iteração + tratamento de erros + agendamento
+
+- Paralelização + futuros
+
+- Selenium + WebDriver + PhantomJS
+
+- SSL + Viewstate + ...
+
+- Exercícios variados no estilo MUY:
+  
+  1. (eu) Conceitos/explicações
+  2. (nós) Exemplo
+  3. (vocês!) Exercício
+
+---
+class: inverse, center, middle
 # XPath
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 &lt;img src="static/html_exemplo_1.png" width="761" style="display: block; margin: auto;" /&gt;
 
@@ -32,7 +72,7 @@ criação de páginas web. Por trás de todo site há pelo menos um arquivo `.ht
 
 ---
 
-# Introdução ao  HTML
+# Introdução ao HTML
 
 &lt;img src="static/html_exemplo_2.png" width="761" style="display: block; margin: auto;" /&gt;
 
@@ -40,7 +80,7 @@ criação de páginas web. Por trás de todo site há pelo menos um arquivo `.ht
 da página: `head` são "metadados", enquanto `body` é o corpo da página
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 &lt;img src="static/html_exemplo_3.png" width="761" style="display: block; margin: auto;" /&gt;
 
@@ -49,7 +89,7 @@ atributos (`charset`, `style`, ...) mudam como essas seções são renderizadas 
 navegador
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 - Todo HTML se transforma em um **DOM** (document object model) dentro do navegador.
 
@@ -66,12 +106,12 @@ navegador
 (*Extensible Markup Language*) que define regras para a codificação de um documento.
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 &lt;img src="static/html_exemplo_tree.png" width="762" style="display: block; margin: auto;" /&gt;
 
 ---
-# Introdução ao  HTML
+# Introdução ao HTML
 
 &lt;img src="static/html_exemplo_tree_paifilho.png" width="762" style="display: block; margin: auto;" /&gt;
 
@@ -245,6 +285,81 @@ rvest::html_nodes(html, ".azul")
 indica que estamos fazendo uma busca em qualquer tag.
 
 ---
+# Exercício (eu)
+
+Acesse o site de buscas [DuckDuckGo.com](https://duckduckgo.com). Baixe a página de
+buscas. Dica: use a função `httr::GET()`.
+
+--
+
+
+```r
+library(httr)
+GET("https://duckduckgo.com")
+```
+
+```
+#&gt; Response [https://duckduckgo.com/]
+#&gt;   Date: 2020-04-24 21:16
+#&gt;   Status: 200
+#&gt;   Content-Type: text/html; charset=UTF-8
+#&gt;   Size: 5.42 kB
+#&gt; &lt;!DOCTYPE html&gt;
+#&gt; &lt;!--[if IEMobile 7 ]&gt; &lt;html lang="en_US" class="no-js iem7"&gt; &lt;![endif]--&gt;
+#&gt; &lt;!--[if lt IE 7]&gt; &lt;html class="ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7 no-js" lang="...
+#&gt; &lt;!--[if IE 7]&gt;    &lt;html class="ie7 lt-ie10 lt-ie9 lt-ie8 no-js" lang="en_US"&gt;...
+#&gt; &lt;!--[if IE 8]&gt;    &lt;html class="ie8 lt-ie10 lt-ie9 no-js" lang="en_US"&gt; &lt;![end...
+#&gt; &lt;!--[if IE 9]&gt;    &lt;html class="ie9 lt-ie10 no-js" lang="en_US"&gt; &lt;![endif]--&gt;
+#&gt; &lt;!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]&gt;&lt;!--&gt;&lt;html class="no-js...
+#&gt; 
+#&gt; &lt;head&gt;
+#&gt; 	&lt;meta http-equiv="X-UA-Compatible" content="IE=Edge" /&gt;
+#&gt; ...
+```
+
+---
+# Exercício (nós)
+
+Examine o código-fonte da página para encontrar o elemento correspondente à
+caixa de busca e copie o seu XPath pelo navegador. Esse XPath é apropriado? Por
+que?
+
+--
+
+```
+//*[@id="search_form_input_homepage"]
+```
+
+Uma forma mais simples talvez fosse
+
+```
+//input[@name="q"]
+```
+
+---
+# Exercício (vocês)
+
+Examine a aba de rede do inspetor do seu navegador. Quando você faz uma busca,
+qual requisição corresponde à mesma? Reproduza essa requisição com o pacote
+`httr`. Dica: use o parâmetro `query` para enviar a requisição correta.
+
+--
+
+
+```r
+GET("https://duckduckgo.com", query = list(q = "R", t = "h_"))
+```
+
+```
+#&gt; Response [https://duckduckgo.com/?q=R&amp;t=h_]
+#&gt;   Date: 2020-04-24 21:16
+#&gt;   Status: 200
+#&gt;   Content-Type: text/html; charset=UTF-8
+#&gt;   Size: 26.2 kB
+```
+
+
+---
 class: inverse, center, middle
 # Iteração
 
@@ -334,11 +449,10 @@ map(nums, ~.x + 1)
 # Utilidade do map
 
 - Se tivermos uma lista de URLs, podemos iterar facilmente em todos sem abrir
-mão da síntaxe maravilhosa do Tidyverse
+mão da sintaxe maravilhosa do Tidyverse
 
 
 ```r
-library(xml2)
 urls &lt;- c(
   "https://en.wikipedia.org/wiki/R_language",
   "https://en.wikipedia.org/wiki/Python_(programming_language)"
@@ -470,7 +584,6 @@ mais de uma lista; salve os arquivos com `GET(..., write_disk(path))`.
 
 
 ```r
-library(httr)
 paths &lt;- paste0(dir, seq_along(urls), ".html")
 
 maybe_get &lt;- function(url, path) {
@@ -518,7 +631,7 @@ os de outro (_multitasking_)
 - O computador pode executar várias tarefas simultaneamente escalonando os
 comandos para seus diferentes núcleos (_multithreading_)
 
-- Muitos computadores possuem **núcleos vírtuais**, permitindo dois comandos por
+- Muitos computadores possuem **núcleos virtuais**, permitindo dois comandos por
 vez em cada núcleo (_hyperthreading_)
 
 ---
@@ -541,9 +654,9 @@ microbenchmark(
 
 ```
 #&gt; Unit: milliseconds
-#&gt;  expr      min        lq      mean    median       uq      max neval
-#&gt;   seq  5.57732  8.356753  9.362075  9.103333 10.39677 16.82645   100
-#&gt;   par 10.81267 13.241205 15.341476 14.373432 16.92544 23.97120   100
+#&gt;  expr       min        lq     mean   median       uq      max neval
+#&gt;   seq  6.299784  9.146648 10.98954 10.48283 12.47503 20.07897   100
+#&gt;   par 12.613360 15.194612 18.89065 18.07087 21.59218 31.14920   100
 ```
 
 ---
@@ -555,7 +668,7 @@ tarefas da sessão principal
   - Ele pode operar em 2 níveis: _multicore_ e _multissession_
   
 - Em cima do `future`, for construído o `furrr` com o objetivo de emular a
-síntaxe do `purrr` para processamento paralelo
+sintaxe do `purrr` para processamento paralelo
 
 - Diferentemente do `parallel`, o `future` é capaz de descobrir sozinho o número
 de núcleos virtuais do computador
@@ -712,10 +825,10 @@ pjs
 
 ```
 #&gt; $process
-#&gt; PROCESS 'phantomjs', running, pid 108362.
+#&gt; PROCESS 'phantomjs', running, pid 149800.
 #&gt; 
 #&gt; $port
-#&gt; [1] 3395
+#&gt; [1] 5866
 ```
 
 ```r
@@ -733,7 +846,7 @@ ses$go("https://google.com")
 ses$takeScreenshot(file = arq)
 ```
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-34-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-39-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 ---
 # Elementos
@@ -776,7 +889,7 @@ ses$takeScreenshot(file = arq)
 ---
 # Exercício (eu)
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-36-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-41-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Exercício (nós)
@@ -795,13 +908,13 @@ ses$takeScreenshot(file = arq)
 ---
 # Exercício (nós)
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-38-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-43-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Exercício (vocês)
 
 Filtrar apenas os fundos de alto risco. Dica: podemos selecionar um elemento de
-uma lista com as setas do teclado (analizar `key`) ou podemos obter a estrutura
+uma lista com as setas do teclado (analisar `key`) ou podemos obter a estrutura
 da lista de seleções.
 
 --
@@ -823,7 +936,7 @@ ses$takeScreenshot(file = arq)
 ---
 # Exercício (vocês)
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-40-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-45-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Quer mais?
@@ -869,7 +982,7 @@ drv$client$screenshot(file = arq)
 ---
 # Demonstração
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-42-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-47-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Mas com o webdriver...
@@ -896,7 +1009,7 @@ ses$takeScreenshot(file = arq)
 ---
 # Mas com o webdriver...
 
-&lt;img src="slides_files/figure-html/unnamed-chunk-44-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-49-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 class: inverse, center, middle
@@ -960,6 +1073,8 @@ POST(url, body = body)
 #&gt; Error in curl::curl_fetch_memory(url, handle = handle): SSL certificate problem: unable to get local issuer certificate
 ```
 
+--
+
 - A primeira tentativa não funcionou por causa de um erro no certificado SSL
 
 - SSL é o nome antigo para TLS (_Transport Layer Security_), uma ferramenta que
@@ -984,8 +1099,10 @@ length(resp$content)
 ```
 
 ```
-#&gt; [1] 16945
+#&gt; [1] 16946
 ```
+
+--
 
 - Apesar de a consulta ter funcionado, o tamanho da resposta (16kB) não está nem
 próximo do esperado
@@ -1009,12 +1126,14 @@ length(resp$content)
 ```
 
 ```
-#&gt; [1] 16945
+#&gt; [1] 16946
 ```
+
+--
 
 - Ainda sem sucesso, precisamos começar a conferir o formulário
 
-- Se saírmos da página e tentarmos copiar o POST de novo, notaremos que o
+- Se sairmos da página e tentarmos copiar o POST de novo, notaremos que o
 Viewstate mudou
 
 &lt;img src="static/viewstate.png" width="280" style="display: block; margin: auto;" /&gt;
@@ -1055,8 +1174,10 @@ length(resp$content)
 ```
 
 ```
-#&gt; [1] 47284
+#&gt; [1] 47286
 ```
+
+--
 
 - Agora que a resposta está correta, podemos continuar a raspagem da página sem
 mais problemas
@@ -1085,6 +1206,8 @@ jid &lt;- resp %&gt;%
 
 ---
 # Requisição do PDF
+
+--
 
 
 ```r
@@ -1126,12 +1249,20 @@ POST(
 
 ```
 #&gt; Response [https://dejt.jt.jus.br/dejt/f/n/diariocon]
-#&gt;   Date: 2020-04-24 02:47
+#&gt;   Date: 2020-04-24 21:18
 #&gt;   Status: 200
 #&gt;   Content-Type: application/pdf
 #&gt;   Size: 9.46 MB
 #&gt; &lt;ON DISK&gt;  /home/clente/Downloads/teste.pdf
 ```
+
+
+
+---
+class: inverse, center, middle
+# Fim
+
+(Parabéns!)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
