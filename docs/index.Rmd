@@ -1129,3 +1129,9 @@ class: inverse, center, middle
 # Fim
 
 (Parabéns!)
+
+---
+class: center, middle
+# Feedback
+
+[https://forms.gle/rPjT9GiY4T5ZFFEE9](https://forms.gle/rPjT9GiY4T5ZFFEE9)

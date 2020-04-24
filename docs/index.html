@@ -300,7 +300,7 @@ GET("https://duckduckgo.com")
 
 ```
 #&gt; Response [https://duckduckgo.com/]
-#&gt;   Date: 2020-04-24 21:16
+#&gt;   Date: 2020-04-24 23:24
 #&gt;   Status: 200
 #&gt;   Content-Type: text/html; charset=UTF-8
 #&gt;   Size: 5.42 kB
@@ -352,7 +352,7 @@ GET("https://duckduckgo.com", query = list(q = "R", t = "h_"))
 
 ```
 #&gt; Response [https://duckduckgo.com/?q=R&amp;t=h_]
-#&gt;   Date: 2020-04-24 21:16
+#&gt;   Date: 2020-04-24 23:24
 #&gt;   Status: 200
 #&gt;   Content-Type: text/html; charset=UTF-8
 #&gt;   Size: 26.2 kB
@@ -654,9 +654,9 @@ microbenchmark(
 
 ```
 #&gt; Unit: milliseconds
-#&gt;  expr       min        lq     mean   median       uq      max neval
-#&gt;   seq  6.299784  9.146648 10.98954 10.48283 12.47503 20.07897   100
-#&gt;   par 12.613360 15.194612 18.89065 18.07087 21.59218 31.14920   100
+#&gt;  expr       min       lq     mean   median       uq      max neval
+#&gt;   seq  8.630773 13.79190 17.49511 17.28082 20.08025 46.08841   100
+#&gt;   par 14.398487 28.10556 32.34163 33.18523 38.11062 58.92204   100
 ```
 
 ---
@@ -825,10 +825,10 @@ pjs
 
 ```
 #&gt; $process
-#&gt; PROCESS 'phantomjs', running, pid 149800.
+#&gt; PROCESS 'phantomjs', running, pid 157429.
 #&gt; 
 #&gt; $port
-#&gt; [1] 5866
+#&gt; [1] 3297
 ```
 
 ```r
@@ -1249,7 +1249,7 @@ POST(
 
 ```
 #&gt; Response [https://dejt.jt.jus.br/dejt/f/n/diariocon]
-#&gt;   Date: 2020-04-24 21:18
+#&gt;   Date: 2020-04-24 23:26
 #&gt;   Status: 200
 #&gt;   Content-Type: application/pdf
 #&gt;   Size: 9.46 MB
@@ -1263,6 +1263,12 @@ class: inverse, center, middle
 # Fim
 
 (Parabéns!)
+
+---
+class: center, middle
+# Feedback
+
+[https://forms.gle/rPjT9GiY4T5ZFFEE9](https://forms.gle/rPjT9GiY4T5ZFFEE9)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
