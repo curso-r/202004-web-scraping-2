@@ -39,7 +39,16 @@ urls <- c(
 
 map(urls, maybe_read_html)
 
+# Paralelo (CORRIGIDO)
+library(parallel)
+library(microbenchmark)
 
+f <- function(x) {
+  Sys.sleep(1)
+  TRUE
+}
 
-
-
+microbenchmark(times = 1,
+  seq = map_dbl(1:10, f),
+  par = mclapply(1:10, f)
+)

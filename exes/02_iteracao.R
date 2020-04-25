@@ -29,12 +29,30 @@ head(urls)
 # mais de uma lista; salve os arquivos com `GET(..., write_disk(path))`.
 
 # 1
-map(urls, possibly(GET, ...))
+maybe_get <- possibly(GET, NULL)
+map(urls, maybe_get)
 
 # 2
-caminhos <- c("1.html", "2.html", ...) # paste0(1:10, ".html")
+paste0(basename(urls), ".html")
+
+caminhos <- paste0("arqs/wiki/", 1:length(urls), ".html")
 
 f <- function(url, caminho) {
-  GET(url, write_disk(caminho))
+  resultado <- maybe_get(url)
+  
+  if (!is.null(resultado)) {
+    writeBin(content(resultado, "raw"), caminho)
+  }
+  
+  return(TRUE)
 }
-map2(urls, caminhos_para_salvar, f)
+resultado <- map2(urls, caminhos, f)
+
+# Mesma coisa
+map2(urls, caminhos, ~maybe_get(.x, write_disk(.y)))
+
+# 2h depois
+"arqs/wiki/15.html" %>%
+  read_html() %>%
+  xml_find_first("//h1") %>%
+  xml_text()
