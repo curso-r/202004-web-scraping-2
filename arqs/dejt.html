@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- f:view contentType="application/xhtml+xml"-->
+<head>
+<title>Pesquisar Di&aacute;rios
+</title>
+
+&#9;<link class="component" href="/dejt/f/a4j/s/3_3_3.Finalorg/richfaces/renderkit/html/css/basic_classes.xcss/DATB/eAF7sqpgb-jyGdIAFrMEaw__" rel="stylesheet" type="text/css" /><link class="component" href="/dejt/f/a4j/s/3_3_3.Finalorg/richfaces/renderkit/html/css/extended_classes.xcss/DATB/eAF7sqpgb-jyGdIAFrMEaw__" media="rich-extended-skinning" rel="stylesheet" type="text/css" /><script src="/dejt/f/a4j/g/3_3_3.Finalorg.ajax4jsf.javascript.AjaxScript" type="text/javascript"></script><script src="/dejt/f/a4j/g/3_3_3.Finalorg/richfaces/renderkit/html/scripts/jquery/jquery.js" type="text/javascript"></script><script type="text/javascript">window.RICH_FACES_EXTENDED_SKINNING_ON=true;</script><script src="/dejt/f/a4j/g/3_3_3.Finalorg/richfaces/renderkit/html/scripts/skinning.js" type="text/javascript"></script><link rel="shortcut icon" href="/dejt/dejt.ico">
+&#9;
+&#9;<link rel="StyleSheet" href="/dejt/plc/css-w2/azul/pele.css" type="text/css" charset="UTF-8">
+&#9;<link rel="StyleSheet" href="/dejt/plc/css-w2/plc.comuns.css" type="text/css" charset="UTF-8">
+&#9;
+&#9;<script type="text/javascript" charset="UTF-8">
+		function setContextPath() {
+			plcGeral.contextPath = "/dejt";
+			plcGeral.parcialAjaxUsa = false;
+		}
+	</script>
+&#9;
+&#9;<script src="/dejt/plc/javascript-w2/plc.comuns.js" type="text/javascript" charset="UTF-8"></script>
+&#9;
+&#9;<script type="text/javascript">
+	  jQuery(function(){
+			jQuery("a.ui-state-default").hover(
+				function(){ jQuery(this).addClass("ui-state-hover"); },
+				function(){ jQuery(this).removeClass("ui-state-hover"); }
+			)
+			jQuery("span.ui-state-default").hover(
+				function(){ jQuery(this).addClass("ui-state-hover"); },
+				function(){ jQuery(this).removeClass("ui-state-hover"); }
+			)
+			jQuery("button.ui-state-default").hover(
+				function(){ jQuery(this).addClass("ui-state-hover"); },
+				function(){ jQuery(this).removeClass("ui-state-hover"); }
+			)
+		});
+	</script>
+</head>
+<body id="corpo_geral" onload="iniciarPagina();" onkeydown="return executarAcaoFuncoes(event);">
+
+
+<style type="text/css">
+#simplemodal-container a.modalCloseImg {
+	background: none;
+	right: -14px;
+	width: 22px;
+	height: 26px;
+	filter: progid :     DXImageTransform.Microsoft.AlphaImageLoader (   
+				   src =     'img/x.png', sizingMethod =     'scale' );
+}
+
+a.dcontexto {
+	position: relative;
+	font: 12px arial, verdana, helvetica, sans-serif;
+	padding: 0;
+	text-decoration: none;
+}
+
+a.dcontexto:hover {
+	background: transparent;
+}
+
+a.dcontexto tooltip {
+	display: none
+}
+
+a.dcontexto:hover tooltip {
+	display: block;
+	position: absolute;
+	width: 400px;
+	top: 20px;
+	right-align: justify;
+	left: 0;
+	font: 12px arial, verdana, helvetica, sans-serif;
+	padding: 5px 10px;
+	border: 1px solid #999;
+	background: #FFF8DC;
+	color: #000;
+}
+</style>
+
+
+&#9;<!-- Page styles -->
+&#9;<link type="text/css" href="/dejt/jquery.simplemodal-1.4.1/css/demo.css" rel="stylesheet" media="screen">
+&#9;&#9;
+&#9;<link type="text/css" href="/dejt/jquery/tooltip/jquery.tooltip.css" rel="stylesheet" media="screen">
+
+&#9;<!-- Contact Form CSS files -->
+&#9;<link type="text/css" href="/dejt/jquery.simplemodal-1.4.1/css/basic.css" rel="stylesheet" media="screen">
+
+&#9;<script type="text/javascript" src="/dejt/jquery.simplemodal-1.4.1/js/jquery.simplemodal.js"></script>
+&#9;<script type="text/javascript" src="/dejt/jquery.simplemodal-1.4.1/js/basic.js"></script>
+&#9;
+&#9;<script type="text/javascript" src="/dejt/jquery/tooltip/jquery.tooltip.js"></script>
+&#9;<script type="text/javascript" src="/dejt/jquery/tooltip/jquery.bgiframe.js"></script>
+&#9;<script type="text/javascript" src="/dejt/jquery/tooltip/jquery.delegate.js"></script>
+&#9;<script type="text/javascript" src="/dejt/jquery/tooltip/jquery.dimensions.js"></script>&#9;
+&#9;&#9;&#9;
+
+<div id="app">
+&#9;<div id="plc-topo" class="ui-widget ui-widget-header ui-corner-top plc-topo     plc-topo-classico">&#9;
+&#9;&#9;
+&#9;&#9;<!-- default -->
+&#9;&#9;
+&#9;&#9;<!-- caminho da imagem conforme servidor de aplicacao -->
+&#9;&#9;&#9;&#9;<div id="nomeEmpresa" class="plc-topo-empresa">
+&#9;&#9;&#9;&#9;&#9;<a href="/dejt"><img class="plc-imagem" src="/dejt/plc/midia/topo-logo-empresa.png" alt="Conselho Superior da Justi&ccedil;a do Trabalho"></a>
+&#9;&#9;&#9;&#9;</div></div>
+&#9;
+&#9;<div class="ui-widget-header" style="clear:both; font-weight:normal; line-height:16px; border-bottom: 1px dashed #C2CED1;"><!--
+		<c:if test="false">
+		-->&#9;
+&#9;</div>
+&#9;&#9;<script language="javascript">
+
+
+		
+				//<![CDATA[
+				/* Fix Menus Antigos! */
+				jQuery(function(){
+					var lis = [];
+					jQuery('div.plc-menu').children().each(function(){
+						var it = jQuery(this);
+						if (it.is('a')) {
+							it.attr('class', '');
+							var li = jQuery('<li/>');
+							var ul = it.next();
+							li.append(it.remove());
+							if (ul.is('ul')) {
+								li.append(ul.css('class', 'ui-state-hover').remove());
+							}
+							lis.push(li.get());
+						} else if (it.is('li')) {
+							lis.push(this);
+						}
+					});
+					if (jQuery('div.plc-menu > ul').length == 0) {
+						jQuery('div.plc-menu').append('<ul/>');
+					}
+					jQuery.each(lis, function(){
+						jQuery('div.plc-menu > ul').append(this);
+					})
+				});
+				//]]>
+				</script>
+&#9;&#9;<div id="plc-menu-classico" class="ui-widget      ui-widget-header      plc-menu      plc-menu-classico ui-state-active"><ul><li><a class="af_outputLabel">Pesquisas</a><ul class="ui-state-hover"><li><a href="/dejt/f/n/diariocon">Di&aacute;rios</a></li><li><a href="/dejt/f/n/materiapublicadacon">Mat&eacute;rias Publicadas</a></li><li><a href="/dejt/f/n/consultaferiadocon">Feriados</a></li><li><a href="/dejt/f/n/autenticacaodiariocon">Aferir Autenticidade de Di&aacute;rios</a></li></ul></li><li><a class="af_outputLabel">Acesso Restrito</a><ul class="ui-state-hover"><li><a href="/dejt/f/m/login">Efetuar Login</a></li></ul></li><li><a class="af_outputLabel">Servi&ccedil;os</a><ul class="ui-state-hover"><li><a href="/dejt/f/n/esqueciminhasenhacon">Esqueceu Sua Senha?</a></li><li><a href="/dejt/f/n/faleconoscocon">Fale Conosco</a></li><li><a href="/dejt/f/n/legislacao">Legisla&ccedil;&atilde;o</a></li><li><a href="/dejt/f/n/manual">Manuais</a></li><li><a href="/dejt/f/n/ocorrencias">Ocorr&ecirc;ncias</a></li></ul></li></ul>
+&#9;&#9;
+&#9;&#9;<!-- Pesquisa se existe solicitações pendentes para advogado -->
+&#9;&#9;&#9;
+&#9;&#9;&#9;<script type="text/javascript">
+			//<![CDATA[
+				if (false) {
+					jQuery(function () {
+						jQuery('#plc-menu-classico').find('a').each(function(){
+							var href = jQuery(this).attr('href');
+							if (href && href != '#') {
+								jQuery(this).attr("href", "javascript: jQuery.plc.parcialAjaxCorpo('" + href + "')");
+							}
+						});
+					});
+				}
+			//]]>
+			</script>
+&#9;&#9;&#9;
+&#9;&#9;</div>
+
+
+
+
+<div id="plc-corpo" class="ui-widget ui-widget-content plc-corpo             plc-corpo-classico      ">
+&#9;
+&#9;<script type="text/javascript">
+	//<![CDATA[
+		setTecnologia('Facelets');
+
+		if (ExpYes){
+			jQuery(function () {
+				jQuery(".plc-fieldset").each (function () {
+					jQuery(this).after('<span style="height:10px">&nbsp;</span>');
+				});
+			});
+		}
+		
+	//]]>
+	</script><script type="text/javascript">var _AdfWindowOpenError='Foi detectado um bloqueador de janela pop-up no seu browser. Esses bloqueadores interferem na operação desta aplicação. Desative seu bloqueador de pop-ups ou permita popups a partir deste site.';</script><script type="text/javascript" src="/dejt/adf/jsLibs/Common1_2_13.js"></script><form id="corpo:formulario" name="corpo:formulario" onkeydown="return executarAcaoFuncoes(event)" method="POST" onkeypress="return _submitOnEnter(event,'corpo:formulario');" action="/dejt/f/n/diariocon"><span id="corpo:formulario:ajaxPanel" class="af_panelGroupLayout"><span id="corpo:formulario:ajaxMensagem" class="af_panelGroupLayout">
+&#9;<div>
+&#9;</div></span><span id="corpo:formulario:ajaxAcoes" class="af_panelGroupLayout">
+&#9;
+&#9;
+&#9;<div id="tituloPagina" class="ui-widget-content ui-corner-all plc-topo-titulo"><label style="font-size: 20px;">
+Pesquisar Di&aacute;rios</label></div>
+
+
+&#9;<div id="plc-corpo-acao" class="plc-corpo-acao"></div>
+&#9;<div id="plc-corpo-acao-personalisado" class="plc-corpo-acao-generico">
+&#9;
+&#9;<div id="plc-corpo-acao-generico" class="plc-corpo-acao-generico"><script type="text/javascript">var _pprUpDatemode=false;function _adfspu(f,v,e,s,o){_pprUpdateMode=true;if(!o)o=new Object();if(e)o.event=e;if(s)o.source=s;_submitPartialChange(f,v,o);}</script><button id="corpo:formulario:botaoAcaoRecuperaPorDemanda" name="corpo:formulario:botaoAcaoRecuperaPorDemanda" type="button" onclick="TrPage._autoSubmit('corpo:formulario','corpo:formulario:botaoAcaoRecuperaPorDemanda',null,1);return false;" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="ui-helper-hidden af_commandButton"><table><tr></tr></table></button>
+<script id="avaliar:corpo:formulario:botaoAcaoRecuperaPorDemanda" type="text/javascript">
+</script>
+<button id="corpo:formulario:botaoAcaoLimparArgs_LIMPAR_ARGS" name="corpo:formulario:botaoAcaoLimparArgs_LIMPAR_ARGS" type="button" title="Limpar" onclick="TrPage._autoSubmit('corpo:formulario','corpo:formulario:botaoAcaoLimparArgs_LIMPAR_ARGS',null,1);return false;" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="botao_menu ui-state-default plc-botao af_commandButton"><table><tr><td><div class="plc-corpo-acao-i"><span class="ico iLimpar"></span></div></td><td><div class="plc-corpo-acao-t">Limpar</div></td></tr></table></button>
+<script id="avaliar:corpo:formulario:botaoAcaoLimparArgs_LIMPAR_ARGS" type="text/javascript">
+</script>
+<button id="corpo:formulario:botaoAcaoPesquisar" name="corpo:formulario:botaoAcaoPesquisar" type="button" title="F9-Pesquisar" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:botaoAcaoPesquisar'});return false;" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="botao_menu ui-state-default plc-botao af_commandButton"><table><tr><td><div class="plc-corpo-acao-i"><span class="ico iPesquisar"></span></div></td><td><div class="plc-corpo-acao-t">F9-Pesquisar</div></td></tr></table></button>
+<script id="avaliar:corpo:formulario:botaoAcaoPesquisar" type="text/javascript">
+setBotaoAcaoEnter('botaoAcaoPesquisar');
+regBotaoEvento('botaoAcaoPesquisar','PESQUISAR');
+</script>
+<!-- /Mostra botao? -->
+&#9;<div id="plc-ajuda" class="plc-painel" style="visibility: hidden">
+&#9;&#9;<h1 style="text-align:center;">Ajuda
+&#9;&#9;&#9;<span class="fechar" onclick="janelaPainel(document.getElementById('plc-ajuda'));">X</span>
+&#9;&#9;</h1>
+&#9;</div> 
+&#9;
+&#9;<script>
+	//<![CDATA[
+		trataExibicaoComponenteData();
+	//]]>
+	</script>
+&#9;
+&#9;</div>
+
+&#9;&#9;<div id="plc-corpo-acao-generico" class="plc-corpo-acao-complemento">
+
+&#9;&#9;&#9;<!-- Scripts para exibir a popup do PDF com dados do tribunal --><button id="corpo:formulario:botaoRecuperaUnidadePorTribunalSelecionado" name="corpo:formulario:botaoRecuperaUnidadePorTribunalSelecionado" type="button" title="???jcompany.evt.vincular.estrutura???" onclick="return _chain('A4J.AJAX.Submit(\'corpo:formulario\',event,{\'similarityGroupingId\':\'corpo:formulario:j_id78\',\'oncomplete\':function(request,event,data){startLoadingAjax(false);},\'parameters\':{\'corpo:formulario:j_id78\':\'corpo:formulario:j_id78\'} } )','submitForm(\'corpo:formulario\',1,{source:\'corpo:formulario:botaoRecuperaUnidadePorTribunalSelecionado\'});return false;',this,null,true)" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="botao_menu ui-state-default plc-botao af_commandButton" style="display:none;visibility:hidden;width:0px;height:0px;"><table><tr><td><div class="plc-corpo-acao-t">???jcompany.evt.vincular.estrutura???</div></td></tr></table></button>
+<script id="avaliar:corpo:formulario:botaoRecuperaUnidadePorTribunalSelecionado" type="text/javascript">
+</script>
+
+
+&#9;&#9;&#9;<!-- Publicar Materia XML -->
+
+&#9;&#9;&#9;<!-- publicamateriaman -->
+
+&#9;&#9;&#9;<!-- publicamateriaavulsaconfirmacaoman --><input id="corpo:formulario:confirma" name="corpo:formulario:confirma" onclick="A4J.AJAX.Submit('corpo:formulario',event,{'similarityGroupingId':'corpo:formulario:confirma','parameters':{'corpo:formulario:confirma':'corpo:formulario:confirma'} } );return false;" style="display: none;" type="button">
+
+&#9;&#9;</div></div></span>
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;<!-- INI --><span id="corpo:formulario:ajaxFormulario" class="af_panelGroupLayout">
+&#9;&#9;&#9;
+&#9;&#9;&#9;<div id="plc-form-basico">
+&#9;&#9;&#9;&#9;<div id="diarioArg" class="plc-form-basico-topo"><fieldset class="plc-fieldset"><legend class="plc-fieldset-legend">Informe os argumentos de pesquisa e clique em Pesquisar</legend><table class="plc-table-tabsel plc-table-tabsel delimitador tabelaSelecao" summary="" border="0" cellspacing="0" cellpadding="0"><tr><td class="celulaFormulario"><span class="af_outputLabel">Data de In&iacute;cio</span><script type="text/javascript">var _locale='pt-BR';var _tLocale='pt-BR';</script><script type="text/javascript" src="/dejt/adf/jsLibs/resources/LocaleElements_pt_BR1_2_13.js?loc=pt_BR"></script><script type="text/javascript">var _df2DYS=1950;</script><script type="text/javascript">var _uixLocaleTZ=-180;</script><span class="af_inputDate p_AFRequired" style="float: left;"><input id="corpo:formulario:dataIni" name="corpo:formulario:dataIni" title="Data de In&iacute;cio" onkeyup="return validaCaracter(this, event, 'D');" onkeypress="formataDataComMascara('corpo:formulario:dataIni',event,'dd/MM/yyyy');" onblur="_dfb(this)" onchange="preencheCampoDestino(this, document.getElementById('corpo:formulario:dataFim'))" class="af_inputDate_content" size="10" maxlength="10" type="text" value="17/04/2020"></span>
+<script id="avaliar:dataInicorpo:formulario:dataInijcompany.erros.data0" type="text/javascript">
+validacaoCriaCampo("corpo:formulario:dataIni","data",'{0} não é uma data válida.', 'PARAM_0', 'null', 'PARAM_3', '1')</script>
+
+<script type="text/javascript" id="avaliar:corpo:formulario:dataIni:7858937804929966">
+jQuery(function(){
+	setTimeout(function(){
+		var input = 'corpo:formulario:dataIni' && document.getElementById('corpo:formulario:dataIni');
+		var meses = '' || '1';
+		if (input && jQuery(input).is("input:enabled")) {
+			jQuery(input).datepicker({
+				numberOfMonths: parseInt(meses), // Multiplos meses no calendario
+				changeMonth: true,
+				changeYear: true,
+				showOn: 'button',
+				buttonText: '<span class="ico iCalendario"></span>',
+				showButtonPanel: true
+			});
+			var trigger = jQuery(input).next();
+			if (trigger.is('.ui-datepicker-trigger')) {
+				// desabilita o Foco quando ocorrer a tabulação.
+				trigger.addClass('ui-state-default');
+				trigger.addClass('plc-botao');
+				trigger.attr('tabIndex', -1);
+			}
+		}
+	}, 200);
+});
+jQuery(function(){
+	setTimeout(function(){/* ajuda: http://digitalbush.com/projects/masked-input-plugin */
+		var input = 'corpo:formulario:dataIni' && document.getElementById('corpo:formulario:dataIni');
+		if (input) {
+			// Retira as funções de máscara do componente.
+			if (input.onkeypress) {
+				input.onkeypress = null;
+			}
+			if (input.onkeyup) {
+				input.onkeyup = null;
+			}
+			if (input.onkeydown) {
+				input.onkeydown = null;
+			}
+			if (jQuery(input).attr("id").indexOf('PadraoGeral') > 0) {
+				jQuery(input).unmask().mask('D9/M9/9999');
+			} else if (jQuery(input).attr("id").indexOf('PadraoDiaMes') > 0) {
+				jQuery(input).unmask().mask('D9/M9');
+			} else {
+				jQuery(input).unmask().mask('D9/M9/Y999');
+			}
+		}
+	}, 200);
+});
+</script>
+<script id="avaliar:corpo:formulario:dataIni" type="text/javascript">validacaoCriaCampo("corpo:formulario:dataIni","obrigatorio",'null{propTitulo} é obrigatório(a)', 'PARAM_0', 'null', 'PARAM_3', '1')</script></td><td class="celulaFormulario"><span class="af_outputLabel">Data de Fim</span><span class="af_inputDate p_AFRequired" style="float: left;"><input id="corpo:formulario:dataFim" name="corpo:formulario:dataFim" title="Data de Fim" onkeyup="return validaCaracter(this, event, 'D');" onkeypress="formataDataComMascara('corpo:formulario:dataFim',event,'dd/MM/yyyy');" onblur="_dfb(this)" class="af_inputDate_content" size="10" maxlength="10" type="text" value="17/04/2020"></span>
+<script id="avaliar:dataFimcorpo:formulario:dataFimjcompany.erros.data0" type="text/javascript">
+validacaoCriaCampo("corpo:formulario:dataFim","data",'{0} não é uma data válida.', 'PARAM_0', 'null', 'PARAM_3', '1')</script>
+
+<script type="text/javascript" id="avaliar:corpo:formulario:dataFim:7858937805254966">
+jQuery(function(){
+	setTimeout(function(){
+		var input = 'corpo:formulario:dataFim' && document.getElementById('corpo:formulario:dataFim');
+		var meses = '' || '1';
+		if (input && jQuery(input).is("input:enabled")) {
+			jQuery(input).datepicker({
+				numberOfMonths: parseInt(meses), // Multiplos meses no calendario
+				changeMonth: true,
+				changeYear: true,
+				showOn: 'button',
+				buttonText: '<span class="ico iCalendario"></span>',
+				showButtonPanel: true
+			});
+			var trigger = jQuery(input).next();
+			if (trigger.is('.ui-datepicker-trigger')) {
+				// desabilita o Foco quando ocorrer a tabulação.
+				trigger.addClass('ui-state-default');
+				trigger.addClass('plc-botao');
+				trigger.attr('tabIndex', -1);
+			}
+		}
+	}, 200);
+});
+jQuery(function(){
+	setTimeout(function(){/* ajuda: http://digitalbush.com/projects/masked-input-plugin */
+		var input = 'corpo:formulario:dataFim' && document.getElementById('corpo:formulario:dataFim');
+		if (input) {
+			// Retira as funções de máscara do componente.
+			if (input.onkeypress) {
+				input.onkeypress = null;
+			}
+			if (input.onkeyup) {
+				input.onkeyup = null;
+			}
+			if (input.onkeydown) {
+				input.onkeydown = null;
+			}
+			if (jQuery(input).attr("id").indexOf('PadraoGeral') > 0) {
+				jQuery(input).unmask().mask('D9/M9/9999');
+			} else if (jQuery(input).attr("id").indexOf('PadraoDiaMes') > 0) {
+				jQuery(input).unmask().mask('D9/M9');
+			} else {
+				jQuery(input).unmask().mask('D9/M9/Y999');
+			}
+		}
+	}, 200);
+});
+</script>
+<script id="avaliar:corpo:formulario:dataFim" type="text/javascript">validacaoCriaCampo("corpo:formulario:dataFim","obrigatorio",'null{propTitulo} é obrigatório(a)', 'PARAM_0', 'null', 'PARAM_3', '1')</script></td><td class="celulaFormulario"><span class="af_outputLabel">Tipo de Caderno</span><span style="float: left;"><span class="af_selectOneChoice" style="float: left;"><select id="corpo:formulario:tipoCaderno" name="corpo:formulario:tipoCaderno" title="Tipo de Caderno" class="af_selectOneChoice_content"><option value="">[Selecione]</option><option value="0">Administrativo</option><option value="1">Judici&aacute;rio</option></select></span></span></td><td class="celulaFormulario"><span class="af_outputLabel">&Oacute;rg&atilde;o</span><span style="float: left;"><span class="af_selectOneChoice" style="float: left;"><select id="corpo:formulario:tribunal" name="corpo:formulario:tribunal" title="Tribunal" class="af_selectOneChoice_content"><option value="">[Selecione]</option><option value="0">TST            </option><option value="1">TRT 1&ordf; Regi&atilde;o  </option><option value="2">TRT 2&ordf; Regi&atilde;o  </option><option value="3">TRT 3&ordf; Regi&atilde;o  </option><option value="4">TRT 4&ordf; Regi&atilde;o  </option><option value="5">TRT 5&ordf; Regi&atilde;o  </option><option value="6">TRT 6&ordf; Regi&atilde;o  </option><option value="7">TRT 7&ordf; Regi&atilde;o  </option><option value="8">TRT 8&ordf; Regi&atilde;o  </option><option value="9">TRT 9&ordf; Regi&atilde;o  </option><option value="10">TRT 10&ordf; Regi&atilde;o </option><option value="11">TRT 11&ordf; Regi&atilde;o </option><option value="12">TRT 12&ordf; Regi&atilde;o </option><option value="13">TRT 13&ordf; Regi&atilde;o </option><option value="14">TRT 14&ordf; Regi&atilde;o </option><option value="15">TRT 15&ordf; Regi&atilde;o </option><option value="16">TRT 16&ordf; Regi&atilde;o </option><option value="17">TRT 17&ordf; Regi&atilde;o </option><option value="18">TRT 18&ordf; Regi&atilde;o </option><option value="19">TRT 19&ordf; Regi&atilde;o </option><option value="20">TRT 20&ordf; Regi&atilde;o </option><option value="21">TRT 21&ordf; Regi&atilde;o </option><option value="22">TRT 22&ordf; Regi&atilde;o </option><option value="23">TRT 23&ordf; Regi&atilde;o </option><option value="24">TRT 24&ordf; Regi&atilde;o </option><option value="25">CSJT           </option><option value="26">ENAMAT         </option></select></span></span></td></tr></table></fieldset>
+&#9;&#9;<script>
+			// funcao para que a data final receba a data inicial quando esta for alterada
+			function copiaDataInicialParaDataFinal() {
+				if (jQuery("#corpo\\:formulario\\:dataPublicacaoINI")) {
+					jQuery("#corpo\\:formulario\\:dataPublicacaoFIM").val(jQuery("#corpo\\:formulario\\:dataPublicacaoINI").val());
+				}
+			}
+		</script><script type="text/javascript">//<![CDATA[
+ {
+	var selector = "#corpo\\:formulario\\:tribunal \x3E option[value=\'\'\x5D";
+	try {
+		selector = eval("#corpo\\:formulario\\:tribunal \x3E option[value=\'\'\x5D");
+	} catch (e) {}
+	jQuery(selector).text('[Todos]');
+}
+//]]></script><script type="text/javascript">//<![CDATA[
+ {
+	var selector = "#corpo\\:formulario\\:tipoCaderno \x3E option[value=\'\'\x5D";
+	try {
+		selector = eval("#corpo\\:formulario\\:tipoCaderno \x3E option[value=\'\'\x5D");
+	} catch (e) {}
+	jQuery(selector).text('[Todos]');
+}
+//]]></script>
+&#9;&#9;&#9;&#9;</div>
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;<div id="diarioNav" class="plc-navegacao"><input type="hidden" id="corpo:formulario:ordenacaoPlc" name="corpo:formulario:ordenacaoPlc" value="">
+&#9;
+&#9;
+&#9;
+&#9;<input type="hidden" id="navDe" name="navDe" value="1">
+&#9;<!-- INICIALIZACAO -->
+
+&#9;<!--
+				movido para inputGeralPaginacaoLogicaItens
+				
+				<plcf:escondido id="ordenacaoPlc" value=""/>
+				
+				<input type="hidden" id="navDe" name="navDe"
+					value="1" />
+
+				<c:if test="false">
+					<input type="hidden" id="mcPlc" name="mcPlc" value="" />
+				</c:if>
+				<c:if test="false">
+					<input type="hidden" id="mfPlc" name="mfPlc" value="" />
+				</c:if>
+				<c:if test="false">
+					<input type="hidden" id="modoJanelaPlc" name="modoJanelaPlc"
+						value="" />
+				</c:if>
+				<c:if test="false">
+					<input type="hidden" id="indMultiSelPlc" name="indMultiSelPlc"
+						value="" />
+				</c:if>
+			
+			--><table class="plc-table-tabsel delimitador tabelaSelecao" summary="" border="0" cellspacing="0" cellpadding="0"><tr><td class="celulaFormulario"><button type="button" onclick="return _chain('jQuery(\'#navDe\').val(\'31\');','TrPage._autoSubmit(\'corpo:formulario\',\'corpo:formulario:j_id188\',null,1);return false;',this,null,true)" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="botao_menu ui-state-default plc-botao af_commandButton"><table><tr><td><div class="plc-corpo-acao-i"><span class="ico iNavProximo"></span></div></td></tr></table></button>
+<script id="avaliar:corpo:formulario:j_id188" type="text/javascript">
+setBotaoAcaoEnter('j_id188');
+regBotaoEvento('j_id188','PESQUISAR');
+</script>
+<button type="button" onclick="return _chain('jQuery(\'#navDe\').val(\'31\');','TrPage._autoSubmit(\'corpo:formulario\',\'corpo:formulario:j_id189\',null,1);return false;',this,null,true)" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="botao_menu ui-state-default plc-botao af_commandButton"><table><tr><td><div class="plc-corpo-acao-i"><span class="ico iNavUltimo"></span></div></td></tr></table></button>
+<script id="avaliar:corpo:formulario:j_id189" type="text/javascript">
+setBotaoAcaoEnter('j_id189');
+regBotaoEvento('j_id189','PESQUISAR');
+</script>
+</td><td class="celulaFormulario">
+&#9;&#9;&#9;&#9;&#9;&#9;1  at&eacute;  30  de 45</td></tr></table>
+&#9;&#9;&#9;&#9;</div>
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;<div id="diarioCon" class="plc-form-basico-sel"><fieldset class="plc-fieldset"><legend class="plc-fieldset-legend">Clique em Baixar para fazer o download do Diário desejado</legend><table class="plc-table-tabsel delimitador tabelaSelecao" summary="" border="0" cellspacing="0" cellpadding="0"><tr class="ui-widget-header"><th class="cabecalho"><span class="af_outputLabel">Data de Disponibiliza&ccedil;&atilde;o</span></th><th class="cabecalho"><span class="af_outputLabel">T&iacute;tulo</span></th><th class="cabecalho"><span class="af_outputLabel">#Baixar</span></th></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do Tribunal Superior do Trabalho - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:0:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 1&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:1:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 1&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:2:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 2&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:3:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 2&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:4:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 3&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:5:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 3&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:6:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 4&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:7:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 4&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:8:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 5&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:9:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 6&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:10:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 6&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:11:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 7&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:12:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 7&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:13:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 8&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:14:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 8&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:15:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 9&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:16:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 10&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:17:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 11&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:18:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 11&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:19:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 12&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:20:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 12&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:21:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 13&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:22:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 14&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:23:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 14&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:24:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 15&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:25:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 15&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:26:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 16&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:27:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhapar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 16&ordf; Regi&atilde;o - Administrativo</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:28:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr><tr class="linhaimpar"><td class="campo"><span class="af_outputLabel">17/04/2020</span></td><td class="campo"><span class="af_outputLabel">Edi&ccedil;&atilde;o 2955/2020 - Caderno do TRT da 17&ordf; Regi&atilde;o - Judici&aacute;rio</span></td><td class="campo" align="center"><button type="button" onclick="submitForm('corpo:formulario',1,{source:'corpo:formulario:plcLogicaItens:29:j_id132'});return false;" class="bt af_commandButton"><img src="/dejt/plc/midia/baixar.png"></button></td></tr></table></fieldset>
+&#9;&#9;&#9;&#9;</div>
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;<div id="diarioInferiorNav" class="plc-navegacao">
+&#9;<!-- INICIALIZACAO -->
+
+&#9;<!--
+				movido para inputGeralPaginacaoLogicaItens
+				
+				<plcf:escondido id="ordenacaoPlc" value=""/>
+				
+				<input type="hidden" id="navDe" name="navDe"
+					value="1" />
+
+				<c:if test="false">
+					<input type="hidden" id="mcPlc" name="mcPlc" value="" />
+				</c:if>
+				<c:if test="false">
+					<input type="hidden" id="mfPlc" name="mfPlc" value="" />
+				</c:if>
+				<c:if test="false">
+					<input type="hidden" id="modoJanelaPlc" name="modoJanelaPlc"
+						value="" />
+				</c:if>
+				<c:if test="false">
+					<input type="hidden" id="indMultiSelPlc" name="indMultiSelPlc"
+						value="" />
+				</c:if>
+			
+			--><table class="plc-table-tabsel delimitador tabelaSelecao" summary="" border="0" cellspacing="0" cellpadding="0"><tr><td class="celulaFormulario"><button type="button" onclick="return _chain('jQuery(\'#navDe\').val(\'31\');','TrPage._autoSubmit(\'corpo:formulario\',\'corpo:formulario:j_id190\',null,1);return false;',this,null,true)" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="botao_menu ui-state-default plc-botao af_commandButton"><table><tr><td><div class="plc-corpo-acao-i"><span class="ico iNavProximo"></span></div></td></tr></table></button>
+<script id="avaliar:corpo:formulario:j_id190" type="text/javascript">
+setBotaoAcaoEnter('j_id190');
+regBotaoEvento('j_id190','PESQUISAR');
+</script>
+<button type="button" onclick="return _chain('jQuery(\'#navDe\').val(\'31\');','TrPage._autoSubmit(\'corpo:formulario\',\'corpo:formulario:j_id191\',null,1);return false;',this,null,true)" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="botao_menu ui-state-default plc-botao af_commandButton"><table><tr><td><div class="plc-corpo-acao-i"><span class="ico iNavUltimo"></span></div></td></tr></table></button>
+<script id="avaliar:corpo:formulario:j_id191" type="text/javascript">
+setBotaoAcaoEnter('j_id191');
+regBotaoEvento('j_id191','PESQUISAR');
+</script>
+</td><td class="celulaFormulario">
+&#9;&#9;&#9;&#9;&#9;&#9;1  at&eacute;  30  de 45</td></tr></table>
+&#9;&#9;&#9;&#9;</div>
+&#9;&#9;&#9;</div>
+&#9;&#9;&#9;&#9;&#9;&#9;<script type="text/javascript">
+							//<![CDATA[
+							setAlertaAlteracao("","");
+							//]]>
+						</script> 
+&#9;<div id="plc-auxiliar" class="plc-auxiliar">
+&#9;&#9;
+&#9;&#9;<input type="hidden" id="detCorrPlc" name="detCorrPlc" value="">
+&#9;&#9;
+&#9;&#9;<input type="hidden" id="tabCorrPlc" name="tabCorrPlc" value="">
+&#9;&#9;
+&#9;&#9;<input type="hidden" id="detCorrPlcPaginado" name="detCorrPlcPaginado" value="">&#9;&#9;
+&#9;&#9;
+&#9;&#9;<input type="hidden" name="exibeEdDocPlc" value="">
+&#9;&#9;
+&#9;&#9;<input id="corpo:formulario:indExcDetPlc" type="hidden" name="indExcDetPlc">&#9;&#9;&#9;
+&#9;</div>
+
+ &#9;<script type="text/javascript">
+ 	//<![CDATA[
+	setTimeout(setUpOnFocusHandlers, 0);
+	setCampoFocus('');
+ 	setTimeout(moverFoco, 0);
+ 	setTimeout(function(){
+		escrevePlcAfter(jQuery('span'),'p_AFRequired','Este campo é obrigatório. Preencha-o antes de gravar.', '/dejt/plc/midia/ico_obrig.png')
+	}, 0);
+	//]]>		
+	</script></span>
+&#9;&#9;&#9;&#9;<!-- FIM --></span><input type="hidden" name="org.apache.myfaces.trinidad.faces.FORM" value="corpo:formulario"><input type="hidden" name="_noJavaScript" value="false"><input type="hidden" name="javax.faces.ViewState" value="!znskjungd"><script type="text/javascript">if(window['_dfs'] == undefined){window['_dfs']=new Object();}if(window['_dl'] == undefined){window['_dl']=new Object();}_dfs["corpo:formulario:dataIni"]='dd/MM/yyyy';_dl["corpo:formulario:dataIni"]=null;_dfs["corpo:formulario:dataFim"]='dd/MM/yyyy';_dl["corpo:formulario:dataFim"]=null;function _corpo_formularioValidator(f,s){return true;}</script><script type="text/javascript">_submitFormCheck();</script></form><span id="corpo:ajaxlogQA" class="af_panelGroupLayout"></span>
+&#9;&#9;
+&#9;&#9;<div class="clear"> </div>&#9;</div><div class="clear"></div>
+&#9;<div id="plc-rodape" class="ui-widget ui-widget-header ui-corner-bottom plc-rodape plc-rodape-classico">
+&#9;
+&#9;<div class="plc-rodape-complemento-empresa">
+&#9;&#9;<div id="plc-rodape-complemento" class="plc-rodape-complemento"><p style="text-align: center;">Conselho Superior da Justi&ccedil;a do Trabalho - Endere&ccedil;o: SAFS - Qd 8, Conj A, Sala A5.71</p>
+<p style="text-align: center;">CEP 70.070-943 - Tel.: (61) 3043-4005 / 3043-3804</p>
+&#9;&#9;</div>
+&#9;&#9;<p><span class="af_outputLabel" style="display: inline">dejt</span>-<span class="af_outputLabel" style="display: inline">6.8.3-2</span> 
+&#9;&#9;</p>
+&#9;</div><form id="rodape" name="rodape" style="margin:0px" method="POST" onkeypress="return _submitOnEnter(event,'rodape');" action="/dejt/f/n/diariocon">
+&#9;&#9;&#9;<h1 style="visibility:hidden;width:1px;height:1px;"><button id="plc-acao-desconecta" name="plc-acao-desconecta" type="button" title="Desconectar" onclick="submitForm('rodape',1,{source:'plc-acao-desconecta'});return false;" onmouseout="this.className='botao_menu ui-state-default plc-botao'" onmouseover="this.className='botao_menu2 ui-state-hover plc-botao'" class="display:none af_commandButton"><table><tr><td><div class="plc-corpo-acao-t">Desconectar</div></td></tr></table></button>
+<script id="avaliar:plc-acao-desconecta" type="text/javascript">
+</script>
+ 
+&#9;&#9;&#9;</h1><input type="hidden" name="org.apache.myfaces.trinidad.faces.FORM" value="rodape"><input type="hidden" name="_noJavaScript" value="false"><input type="hidden" name="javax.faces.ViewState" value="!znskjungd"><script type="text/javascript">function _rodapeValidator(f,s){return true;}</script><script type="text/javascript">_submitFormCheck();</script></form>&#9;
+&#9;
+&#9;&#9;<div id="plc-rodape-timeout" class="plc-rodape-timeout" title="Tempo restante de inatividade para que sua sess&atilde;o seja encerrada, seguido do tempo padr&atilde;o da sesss&atilde;o">
+&#9;&#9;&#9;<span class="ico iTempologado"></span> Tempo sessao: <em>30.0m</em>
+&#9;&#9;</div>
+&#9;&#9;<div id="plc-rodape-timeout" class="plc-rodape-timeout" title="Tempo restante de inatividade para que sua sess&atilde;o seja encerrada, seguido do tempo padr&atilde;o da sesss&atilde;o"> 
+&#9;        <span class="ico iHoralogin"></span> Hora login: <em>17:31</em>
+&#9;&#9;</div></div><script language="javascript" type="text/javascript">
+//<![CDATA[
+function faceletsDebug(URL) { day = new Date(); id = day.getTime(); eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=800,height=600,left = 240,top = 212');"); };var faceletsOrigKeyup = document.onkeyup; document.onkeyup = function(e) { if (window.event) e = window.event; if (String.fromCharCode(e.keyCode) == 'D' & e.shiftKey & e.ctrlKey) faceletsDebug('/dejt/f/n/diariocon?facelets.ui.DebugOutput=1587076322016'); else if (faceletsOrigKeyup) faceletsOrigKeyup(e); };
+//]]>
+</script>
+</div>
+
+
+
+
+
+</body>
+<!--/f:view-->
+</html>

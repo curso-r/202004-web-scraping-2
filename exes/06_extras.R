@@ -49,6 +49,30 @@ f <- function(x) {
 }
 
 microbenchmark(times = 1,
-  seq = map_dbl(1:10, f),
-  par = mclapply(1:10, f)
+               seq = map_dbl(1:10, f),
+               par = mclapply(1:10, f)
 )
+
+# XP
+GET("https://institucional.xpi.com.br/investimentos/fundos-de-investimento/lista-de-fundos-de-investimento.aspx", write_disk("arqs/xp.html"))
+
+# PhantomJS
+library(webdriver)
+pjs <- run_phantomjs()
+ses <- Session$new(port = pjs$port)
+
+ses$go("https://google.com")
+ses$takeScreenshot()
+
+# ses$findElement(...) # find_first
+# ses$findElements(...) # find_all
+
+elem <- ses$findElement(xpath = "//*[@name='q']")
+elem$sendKeys("busca")
+ses$takeScreenshot()
+
+elem$sendKeys(key$enter)
+ses$takeScreenshot()
+
+html <- ses$getSource()
+readr::write_file(html, "arqs/google.html")
