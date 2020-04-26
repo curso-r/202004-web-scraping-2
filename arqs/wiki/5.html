@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Array programming - Wikipedia</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"XqMy3ApAIDAAAHo436wAAACB","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Array_programming","wgTitle":"Array programming","wgCurRevisionId":952912281,"wgRevisionId":952912281,"wgArticleId":890887,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Pages using deprecated source tags","CS1 errors: missing periodical","Articles with example MATLAB/Octave code","Articles with example BASIC code","Articles with example Ada code","Articles with example R code","Array programming languages","Programming paradigms"],"wgPageContentLanguage":"en",
+"wgPageContentModel":"wikitext","wgRelevantPageName":"Array_programming","wgRelevantArticleId":890887,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgPopupsReferencePreviews":!1,"wgPopupsConflictsWithNavPopupGadget":!1,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":!0,"nearby":!0,"watchlist":!0,"tagline":!1},"wgWMESchemaEditAttemptStepOversample":!1,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgWikibaseItemId":"Q4795882","wgCentralAuthMobileDomain":!1,"wgEditSubmitButtonLabelPublish":!0};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","ext.pygments":"ready",
+"jquery.makeCollapsible.styles":"ready","mediawiki.toc.styles":"ready","skins.vector.styles.legacy":"ready","wikibase.client.init":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","site","mediawiki.page.startup","skins.vector.js","mediawiki.page.ready","jquery.makeCollapsible","mediawiki.toc","ext.gadget.ReferenceTooltips","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.extra-toolbar-buttons","ext.gadget.switcher","ext.centralauth.centralautologin","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.compactlinks","ext.uls.interface","ext.cx.eventlogging.campaigns","ext.quicksurveys.init","ext.centralNotice.geoIP","ext.centralNotice.startUp"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.pygments%2CwikimediaBadges%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cjquery.makeCollapsible.styles%7Cmediawiki.toc.styles%7Cskins.vector.styles.legacy%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.35.0-wmf.28"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Array_programming&amp;action=edit"/>
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Array_programming&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Array_programming"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<!--[if lt IE 9]><script src="/w/resources/lib/html5shiv/html5shiv.js"></script><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Array_programming rootpage-Array_programming skin-vector action-view">
+<div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+		<div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+	<div class="mw-indicators mw-body-content">
+</div>
+
+	<h1 id="firstHeading" class="firstHeading" lang="en">Array programming</h1>
+	
+	<div id="bodyContent" class="mw-body-content">
+		<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+		<div id="contentSub"></div>
+		
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#p-search">Jump to search</a>
+		<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tbody><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em"><a href="/wiki/Programming_paradigm" title="Programming paradigm">Programming paradigms</a></th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+<ul><li><a href="/wiki/Action_language" title="Action language">Action</a></li>
+<li><a href="/wiki/Agent-oriented_programming" title="Agent-oriented programming">Agent-oriented</a></li>
+<li><a class="mw-selflink selflink">Array-oriented</a></li>
+<li><a href="/wiki/Automata-based_programming" title="Automata-based programming">Automata-based</a></li>
+<li><a href="/wiki/Concurrent_computing" title="Concurrent computing">Concurrent computing</a>
+<ul><li><a href="/wiki/Relativistic_programming" title="Relativistic programming">Relativistic programming</a></li></ul></li>
+<li><a href="/wiki/Data-driven_programming" title="Data-driven programming">Data-driven</a></li>
+<li><a href="/wiki/Declarative_programming" title="Declarative programming">Declarative</a> (contrast: <a href="/wiki/Imperative_programming" title="Imperative programming">Imperative</a>)
+<ul><li><a href="/wiki/Functional_programming" title="Functional programming">Functional</a>
+<ul><li><a href="/wiki/Functional_logic_programming" title="Functional logic programming">Functional logic</a></li>
+<li><a href="/wiki/Purely_functional_programming" title="Purely functional programming">Purely functional</a></li></ul></li>
+<li><a href="/wiki/Logic_programming" title="Logic programming">Logic</a>
+<ul><li><a href="/wiki/Abductive_logic_programming" title="Abductive logic programming">Abductive logic</a></li>
+<li><a href="/wiki/Answer_set_programming" title="Answer set programming">Answer set</a></li>
+<li><a href="/wiki/Concurrent_logic_programming" title="Concurrent logic programming">Concurrent logic</a></li>
+<li><a href="/wiki/Functional_logic_programming" title="Functional logic programming">Functional logic</a></li>
+<li><a href="/wiki/Inductive_logic_programming" title="Inductive logic programming">Inductive logic</a></li></ul></li>
+<li><a href="/wiki/Constraint_programming" title="Constraint programming">Constraint</a>
+<ul><li><a href="/wiki/Constraint_logic_programming" title="Constraint logic programming">Constraint logic</a>
+<ul><li><a href="/wiki/Concurrent_constraint_logic_programming" title="Concurrent constraint logic programming">Concurrent constraint logic</a></li></ul></li></ul></li>
+<li><a href="/wiki/Dataflow_programming" title="Dataflow programming">Dataflow</a>
+<ul><li><a href="/wiki/Flow-based_programming" title="Flow-based programming">Flow-based</a></li>
+<li><a href="/wiki/Reactive_programming" title="Reactive programming">Reactive</a></li></ul></li>
+<li><a href="/wiki/Ontology_language" title="Ontology language">Ontology</a></li></ul></li>
+<li><a href="/wiki/Differentiable_programming" title="Differentiable programming">Differentiable</a></li>
+<li><a href="/wiki/Dynamic_programming_language" title="Dynamic programming language">Dynamic/scripting</a></li>
+<li><a href="/wiki/Event-driven_programming" title="Event-driven programming">Event-driven</a></li>
+<li><a href="/wiki/Function-level_programming" title="Function-level programming">Function-level</a> (contrast: <a href="/wiki/Value-level_programming" title="Value-level programming">Value-level</a>)
+<ul><li><a href="/wiki/Tacit_programming" title="Tacit programming">Point-free style</a>
+<ul><li><a href="/wiki/Concatenative_programming_language" title="Concatenative programming language">Concatenative</a></li></ul></li></ul></li>
+<li><a href="/wiki/Generic_programming" title="Generic programming">Generic</a></li>
+<li><a href="/wiki/Imperative_programming" title="Imperative programming">Imperative</a> (contrast: <a href="/wiki/Declarative_programming" title="Declarative programming">Declarative</a>)
+<ul><li><a href="/wiki/Procedural_programming" title="Procedural programming">Procedural</a></li>
+<li><a href="/wiki/Object-oriented_programming" title="Object-oriented programming">Object-oriented</a>
+<ul><li><a href="/wiki/Polymorphic_code" title="Polymorphic code">Polymorphic</a></li></ul></li></ul></li>
+<li><a href="/wiki/Intentional_programming" title="Intentional programming">Intentional</a></li>
+<li><a href="/wiki/Language-oriented_programming" title="Language-oriented programming">Language-oriented</a>
+<ul><li><a href="/wiki/Domain-specific_language" title="Domain-specific language">Domain-specific</a></li></ul></li>
+<li><a href="/wiki/Literate_programming" title="Literate programming">Literate</a></li>
+<li><a href="/wiki/Natural-language_programming" title="Natural-language programming">Natural-language programming</a></li>
+<li><a href="/wiki/Metaprogramming" title="Metaprogramming">Metaprogramming</a>
+<ul><li><a href="/wiki/Automatic_programming" title="Automatic programming">Automatic</a>
+<ul><li><a href="/wiki/Inductive_programming" title="Inductive programming">Inductive programming</a></li></ul></li>
+<li><a href="/wiki/Reflection_(computer_programming)" title="Reflection (computer programming)">Reflective</a>
+<ul><li><a href="/wiki/Attribute-oriented_programming" title="Attribute-oriented programming">Attribute-oriented</a></li></ul></li>
+<li><a href="/wiki/Macro_(computer_science)" title="Macro (computer science)">Macro</a></li>
+<li><a href="/wiki/Template_metaprogramming" title="Template metaprogramming">Template</a></li></ul></li>
+<li><a href="/wiki/Non-structured_programming" title="Non-structured programming">Non-structured</a> (contrast: <a href="/wiki/Structured_programming" title="Structured programming">Structured</a>)
+<ul><li><a class="mw-selflink selflink">Array</a></li></ul></li>
+<li><a href="/wiki/Nondeterministic_programming" title="Nondeterministic programming">Nondeterministic</a></li>
+<li><a href="/wiki/Parallel_computing" title="Parallel computing">Parallel computing</a>
+<ul><li><a href="/wiki/Process-oriented_programming" title="Process-oriented programming">Process-oriented</a></li></ul></li>
+<li><a href="/wiki/Probabilistic_programming_language" class="mw-redirect" title="Probabilistic programming language">Probabilistic</a></li>
+<li><a href="/wiki/Quantum_programming" title="Quantum programming">Quantum</a></li>
+<li><a href="/wiki/Set_theoretic_programming" title="Set theoretic programming">Set-theoretic</a></li>
+<li><a href="/wiki/Stack-oriented_programming" title="Stack-oriented programming">Stack-based</a></li>
+<li><a href="/wiki/Structured_programming" title="Structured programming">Structured</a> (contrast: <a href="/wiki/Non-structured_programming" title="Non-structured programming">Non-structured</a>)
+<ul><li><a href="/wiki/Block_(programming)" title="Block (programming)">Block-structured</a>
+<ul><li><a href="/wiki/Structured_concurrency" title="Structured concurrency">Structured concurrency</a></li></ul></li>
+<li><a href="/wiki/Object-oriented_programming" title="Object-oriented programming">Object-oriented</a>
+<ul><li><a href="/wiki/Actor_model" title="Actor model">Actor-based</a></li>
+<li><a href="/wiki/Class-based_programming" title="Class-based programming">Class-based</a></li>
+<li><a href="/wiki/Concurrent_object-oriented_programming" title="Concurrent object-oriented programming">Concurrent</a></li>
+<li><a href="/wiki/Prototype-based_programming" title="Prototype-based programming">Prototype-based</a></li>
+<li>By <a href="/wiki/Separation_of_concerns" title="Separation of concerns">separation of concerns</a>:
+<ul><li><a href="/wiki/Aspect-oriented_programming" title="Aspect-oriented programming">Aspect-oriented</a></li>
+<li><a href="/wiki/Role-oriented_programming" title="Role-oriented programming">Role-oriented</a></li>
+<li><a href="/wiki/Subject-oriented_programming" title="Subject-oriented programming">Subject-oriented</a></li></ul></li></ul></li>
+<li><a href="/wiki/Recursion_(computer_science)" title="Recursion (computer science)">Recursive</a></li></ul></li>
+<li><a href="/wiki/Symbolic_programming" title="Symbolic programming">Symbolic</a></li>
+<li><a href="/wiki/Value-level_programming" title="Value-level programming">Value-level</a> (contrast: <a href="/wiki/Function-level_programming" title="Function-level programming">Function-level</a>)</li></ul></td>
+</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/Template:Programming_paradigms" title="Template:Programming paradigms"><abbr title="View this template">v</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:Programming_paradigms" title="Template talk:Programming paradigms"><abbr title="Discuss this template">t</abbr></a></li><li class="nv-edit"><a class="external text" href="https://en.wikipedia.org/w/index.php?title=Template:Programming_paradigms&amp;action=edit"><abbr title="Edit this template">e</abbr></a></li></ul></div></td></tr></tbody></table>
+<p>In <a href="/wiki/Computer_science" title="Computer science">computer science</a>, <b>array programming</b> refers to solutions which allow the application of operations to an entire set of values at once. Such solutions are commonly used in <a href="/wiki/Computational_science" title="Computational science">scientific</a> and engineering settings. 
+</p><p>Modern programming languages that support array programming (also known as <a href="/wiki/Vector_(computing)" class="mw-redirect" title="Vector (computing)">vector</a> or <b>multidimensional</b> languages) have been engineered specifically to  generalize operations on <a href="/wiki/Scalar_(computing)" class="mw-redirect" title="Scalar (computing)">scalars</a> to apply transparently to <a href="/wiki/Vector_(geometric)" class="mw-redirect" title="Vector (geometric)">vectors</a>, <a href="/wiki/Matrix_(mathematics)" title="Matrix (mathematics)">matrices</a>, and higher-dimensional arrays. These include <a href="/wiki/APL_(programming_language)" title="APL (programming language)">APL</a>, <a href="/wiki/J_(programming_language)" title="J (programming language)">J</a>, <a href="/wiki/Fortran_90" class="mw-redirect" title="Fortran 90">Fortran 90</a>, Mata, <a href="/wiki/MATLAB" title="MATLAB">MATLAB</a>, <a href="/wiki/Analytica_(software)" title="Analytica (software)">Analytica</a>, <a href="/wiki/TK_Solver" title="TK Solver">TK Solver</a> (as lists), <a href="/wiki/GNU_Octave" title="GNU Octave">Octave</a>, <a href="/wiki/R_(programming_language)" title="R (programming language)">R</a>, <a href="/wiki/Cilk_Plus" class="mw-redirect" title="Cilk Plus">Cilk Plus</a>, <a href="/wiki/Julia_(programming_language)" title="Julia (programming language)">Julia</a>, <a href="/wiki/Perl_Data_Language" title="Perl Data Language">Perl Data Language (PDL)</a>, <a href="/wiki/Wolfram_Language" title="Wolfram Language">Wolfram Language</a>, and the <a href="/wiki/NumPy" title="NumPy">NumPy</a> extension to <a href="/wiki/Python_(programming_language)" title="Python (programming language)">Python</a>. In these languages, an operation that operates on entire arrays can be called a <i>vectorized</i> operation,<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup> regardless of whether it is executed on a <a href="/wiki/Vector_processor" title="Vector processor">vector processor</a> (which implements vector instructions) or not.
+Array programming primitives concisely express broad ideas about data manipulation. The level of concision can be dramatic in certain cases: it is not uncommon to find array programming language <a href="/wiki/One-liner_program" title="One-liner program">one-liners</a> that require more than a couple of pages of object-oriented code.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Concepts_of_array"><span class="tocnumber">1</span> <span class="toctext">Concepts of array</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Uses"><span class="tocnumber">2</span> <span class="toctext">Uses</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Languages"><span class="tocnumber">3</span> <span class="toctext">Languages</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Scalar_languages"><span class="tocnumber">3.1</span> <span class="toctext">Scalar languages</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Array_languages"><span class="tocnumber">3.2</span> <span class="toctext">Array languages</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#Ada"><span class="tocnumber">3.2.1</span> <span class="toctext">Ada</span></a></li>
+<li class="toclevel-3 tocsection-7"><a href="#APL"><span class="tocnumber">3.2.2</span> <span class="toctext">APL</span></a></li>
+<li class="toclevel-3 tocsection-8"><a href="#Analytica"><span class="tocnumber">3.2.3</span> <span class="toctext">Analytica</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#BASIC"><span class="tocnumber">3.2.4</span> <span class="toctext">BASIC</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#Mata"><span class="tocnumber">3.2.5</span> <span class="toctext">Mata</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#MATLAB"><span class="tocnumber">3.2.6</span> <span class="toctext">MATLAB</span></a></li>
+<li class="toclevel-3 tocsection-12"><a href="#rasql"><span class="tocnumber">3.2.7</span> <span class="toctext">rasql</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="#R"><span class="tocnumber">3.2.8</span> <span class="toctext">R</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-14"><a href="#Mathematical_reasoning_and_language_notation"><span class="tocnumber">4</span> <span class="toctext">Mathematical reasoning and language notation</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Third-party_libraries"><span class="tocnumber">5</span> <span class="toctext">Third-party libraries</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#References"><span class="tocnumber">7</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#External_links"><span class="tocnumber">8</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Concepts_of_array">Concepts of array</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=1" title="Edit section: Concepts of array">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The fundamental idea behind array programming is that operations apply at once to an entire set of values. This makes it a <a href="/wiki/High-level_programming_language" title="High-level programming language">high-level programming</a> model as it allows the programmer to think and operate on whole aggregates of data, without having to resort to explicit loops of individual scalar operations.
+</p><p><a href="/wiki/Kenneth_E._Iverson" title="Kenneth E. Iverson">Kenneth E. Iverson</a> described the rationale behind array programming (actually referring to <a href="/wiki/APL_(programming_language)" title="APL (programming language)">APL</a>) as follows:<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+<style data-mw-deduplicate="TemplateStyles:r886047036">.mw-parser-output .templatequote{overflow:hidden;margin:1em 0;padding:0 40px}.mw-parser-output .templatequote .templatequotecite{line-height:1.5em;text-align:left;padding-left:1.6em;margin-top:0}</style><blockquote class="templatequote"><p>most programming languages are decidedly inferior to mathematical notation and are little used as tools of thought in ways that would be considered significant by, say, an applied mathematician.
+</p><p>The thesis is that the advantages of executability and universality found in programming languages can be effectively combined, in a single coherent language, with the advantages offered by mathematical notation. it is important to distinguish the difficulty of describing and of learning a piece of notation from the difficulty of mastering its implications. For example, learning the rules for computing a matrix product is easy, but a mastery of its implications (such as its associativity, its distributivity over addition, and its ability to represent linear functions and geometric operations) is a different and much more difficult matter.
+</p><p>Indeed, the very suggestiveness of a notation may make it seem harder to learn because of the many properties it suggests for explorations.
+</p><p>[...]
+</p><p>
+Users of computers and programming languages are often concerned primarily with the efficiency of execution of algorithms, and might, therefore, summarily dismiss many of the algorithms presented here. Such dismissal would be short-sighted since a clear statement of an algorithm can usually be used as a basis from which one may easily derive a more efficient algorithm.</p></blockquote>
+<p>The basis behind array programming and thinking is to find and exploit the properties of data where individual elements are similar or adjacent. Unlike object orientation which implicitly breaks down data to its constituent parts (or <a href="/wiki/Scalar_(computing)" class="mw-redirect" title="Scalar (computing)">scalar</a> quantities), array orientation looks to group data and apply a uniform handling.
+</p><p><a href="/w/index.php?title=Function_rank&amp;action=edit&amp;redlink=1" class="new" title="Function rank (page does not exist)">Function rank</a> is an important concept to array programming languages in general, by analogy to <a href="/wiki/Tensor" title="Tensor">tensor</a> rank in mathematics: functions that operate on data may be classified by the number of dimensions they act on. Ordinary multiplication, for example, is a scalar ranked function because it operates on zero-dimensional data (individual numbers). The <a href="/wiki/Cross_product" title="Cross product">cross product</a> operation is an example of a vector rank function because it operates on vectors, not scalars. <a href="/wiki/Matrix_multiplication" title="Matrix multiplication">Matrix multiplication</a> is an example of a 2-rank function, because it operates on 2-dimensional objects (matrices). <a href="/wiki/Reduce_(higher-order_function)" class="mw-redirect" title="Reduce (higher-order function)">Collapse operators</a> reduce the dimensionality of an input data array by one or more dimensions. For example, summing over elements collapses the input array by 1 dimension.
+</p>
+<h2><span class="mw-headline" id="Uses">Uses</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=2" title="Edit section: Uses">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Array programming is very well suited to <a href="/wiki/Implicit_parallelization" class="mw-redirect" title="Implicit parallelization">implicit parallelization</a>; a topic of much research nowadays. Further, <a href="/wiki/Intel" title="Intel">Intel</a> and compatible CPUs developed and produced after 1997 contained various instruction set extensions, starting from <a href="/wiki/MMX_(instruction_set)" title="MMX (instruction set)">MMX</a> and continuing through <a href="/wiki/SSSE3" title="SSSE3">SSSE3</a> and <a href="/wiki/3DNow!" title="3DNow!">3DNow!</a>, which include rudimentary <a href="/wiki/SIMD" title="SIMD">SIMD</a> array capabilities. Array processing is distinct from <a href="/wiki/Parallel_computing" title="Parallel computing">parallel processing</a> in that one physical processor performs operations on a group of items simultaneously while parallel processing aims to split a larger problem into smaller ones (<a href="/wiki/MIMD" title="MIMD">MIMD</a>) to be solved piecemeal by numerous processors. Processors with two or more cores are increasingly common today.
+</p>
+<h2><span class="mw-headline" id="Languages">Languages</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=3" title="Edit section: Languages">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The canonical examples of array programming languages are <a href="/wiki/Fortran" title="Fortran">Fortran</a>, <a href="/wiki/APL_(programming_language)" title="APL (programming language)">APL</a>, and <a href="/wiki/J_programming_language" class="mw-redirect" title="J programming language">J</a>. Others include: <a href="/wiki/A%2B_(programming_language)" title="A+ (programming language)">A+</a>, <a href="/wiki/Analytica_(software)" title="Analytica (software)">Analytica</a>, <a href="/wiki/Chapel_(programming_language)" title="Chapel (programming language)">Chapel</a>, <a href="/wiki/IDL_(programming_language)" title="IDL (programming language)">IDL</a>, <a href="/wiki/Julia_(programming_language)" title="Julia (programming language)">Julia</a>, <a href="/wiki/K_(programming_language)" title="K (programming language)">K</a>, Klong, <a href="/wiki/Q_(programming_language_from_Kx_Systems)" title="Q (programming language from Kx Systems)">Q</a>, Mata, <a href="/wiki/Wolfram_Language" title="Wolfram Language">Wolfram Language</a>, <a href="/wiki/MATLAB" title="MATLAB">MATLAB</a>, <a href="/w/index.php?title=MOLSF&amp;action=edit&amp;redlink=1" class="new" title="MOLSF (page does not exist)">MOLSF</a>, <a href="/wiki/NumPy" title="NumPy">NumPy</a>, <a href="/wiki/GNU_Octave" title="GNU Octave">GNU Octave</a>, <a href="/wiki/Perl_Data_Language" title="Perl Data Language">PDL</a>, <a href="/wiki/R_(programming_language)" title="R (programming language)">R</a>, <a href="/wiki/S-Lang_(programming_language)" class="mw-redirect" title="S-Lang (programming language)">S-Lang</a>, <a href="/wiki/SAC_programming_language" title="SAC programming language">SAC</a>, <a href="/wiki/Nial_programming_language" class="mw-redirect" title="Nial programming language">Nial</a> and <a href="/wiki/ZPL_(programming_language)" title="ZPL (programming language)">ZPL</a>.
+</p>
+<h3><span class="mw-headline" id="Scalar_languages">Scalar languages</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=4" title="Edit section: Scalar languages">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In scalar languages such as <a href="/wiki/C_(programming_language)" title="C (programming language)">C</a> and <a href="/wiki/Pascal_(programming_language)" title="Pascal (programming language)">Pascal</a>, operations apply only to single values, so <i>a</i>+<i>b</i> expresses the addition of two numbers. In such languages, adding one array to another requires indexing and looping, the coding of which is tedious.
+</p>
+<div class="mw-highlight mw-highlight-lang-c mw-content-ltr" dir="ltr"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+</pre></div>
+<p>In array-based languages, for example in <a href="/wiki/Fortran" title="Fortran">Fortran</a>, the nested for-loop above can be written in array-format in one line,
+</p>
+<div class="mw-highlight mw-highlight-lang-fortran mw-content-ltr" dir="ltr"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+<p>or alternatively, to emphasize the array nature of the objects,
+</p>
+<div class="mw-highlight mw-highlight-lang-fortran mw-content-ltr" dir="ltr"><pre><span></span><span class="n">a</span><span class="p">(:,:)</span> <span class="o">=</span> <span class="n">a</span><span class="p">(:,:)</span> <span class="o">+</span> <span class="n">b</span><span class="p">(:,:)</span>
+</pre></div>
+<h3><span class="mw-headline" id="Array_languages">Array languages</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=5" title="Edit section: Array languages">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In array languages, operations are generalized to apply to both scalars and arrays. Thus, <i>a</i>+<i>b</i> expresses the sum of two scalars if <i>a</i> and <i>b</i> are scalars, or the sum of two arrays if they are arrays.
+</p><p>An array language simplifies programming but possibly at a cost known as the <i>abstraction penalty</i>.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup><sup id="cite_ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup><sup id="cite_ref-5" class="reference"><a href="#cite_note-5">&#91;5&#93;</a></sup> Because the additions are performed in isolation from the rest of the coding, they may not produce the optimally most <a href="/wiki/Algorithmic_efficiency" title="Algorithmic efficiency">efficient</a> code. (For example, additions of other elements of the same array may be subsequently encountered during the same execution, causing unnecessary repeated lookups.) Even the most sophisticated <a href="/wiki/Optimizing_compiler" title="Optimizing compiler">optimizing compiler</a> would have an extremely hard time amalgamating two or more apparently disparate functions which might appear in different program sections or sub-routines, even though a programmer could do this easily, aggregating sums on the same pass over the array to minimize <a href="/wiki/Computational_overhead" class="mw-redirect" title="Computational overhead">overhead</a>).
+</p>
+<h4><span class="mw-headline" id="Ada">Ada</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=6" title="Edit section: Ada">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The previous C code would become the following in the <a href="/wiki/Ada_(programming_language)" title="Ada (programming language)">Ada</a> language,<sup id="cite_ref-6" class="reference"><a href="#cite_note-6">&#91;6&#93;</a></sup> which supports array-programming syntax.
+</p>
+<div class="mw-highlight mw-highlight-lang-ada mw-content-ltr" dir="ltr"><pre><span></span><span class="n">A</span> <span class="p">:=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">;</span>
+</pre></div>
+<h4><span class="mw-headline" id="APL">APL</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=7" title="Edit section: APL">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p><a href="/wiki/APL_(programming_language)" title="APL (programming language)">APL</a> uses single character Unicode symbols with no syntactic sugar.
+</p>
+<div class="mw-highlight mw-highlight-lang-apl mw-content-ltr" dir="ltr"><pre><span></span><span class="nv">A</span> <span class="kd">←</span> <span class="nv">A</span> <span class="o">+</span> <span class="nv">B</span>
+</pre></div>
+<p>This operation works on arrays of any rank (including rank 0), and on a scalar and an array.  Dyalog APL extends the original language with <a href="/wiki/Augmented_assignment" title="Augmented assignment">augmented assignments</a>:
+</p>
+<div class="mw-highlight mw-highlight-lang-apl mw-content-ltr" dir="ltr"><pre><span></span><span class="nv">A</span> <span class="o">+</span><span class="kd">←</span> <span class="nv">B</span>
+</pre></div>
+<h4><span class="mw-headline" id="Analytica">Analytica</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=8" title="Edit section: Analytica">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>Analytica provides the same economy of expression as Ada.
+</p>
+<pre>A&#160;:= A + B;
+</pre>
+<h4><span class="mw-headline" id="BASIC">BASIC</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=9" title="Edit section: BASIC">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p><a href="/wiki/Dartmouth_BASIC" title="Dartmouth BASIC">Dartmouth BASIC</a> had MAT statements for matrix and array manipulation in its third edition (1966).
+</p>
+<div class="mw-highlight mw-highlight-lang-basic mw-content-ltr" dir="ltr"><pre><span></span><span class="kd">DIM</span><span class="w"> </span><span class="vg">A</span><span class="p">(</span><span class="il">4</span><span class="p">),</span><span class="vg">B</span><span class="p">(</span><span class="il">4</span><span class="p">),</span><span class="vg">C</span><span class="p">(</span><span class="il">4</span><span class="p">)</span>
+<span class="vg">MAT</span><span class="w"> </span><span class="vg">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="il">1</span>
+<span class="vg">MAT</span><span class="w"> </span><span class="vg">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="il">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="vg">A</span>
+<span class="vg">MAT</span><span class="w"> </span><span class="vg">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">B</span>
+<span class="vg">MAT</span><span class="w"> </span><span class="kr">PRINT</span><span class="w"> </span><span class="vg">A</span><span class="p">,</span><span class="vg">B</span><span class="p">,</span><span class="vg">C</span>
+</pre></div>
+<h4><span class="mw-headline" id="Mata">Mata</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=10" title="Edit section: Mata">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p><a href="/wiki/Stata" title="Stata">Stata</a>'s matrix programming language Mata supports array programming. Below, we illustrate addition, multiplication, addition of a matrix and a scalar, element by element multiplication, subscripting, and one of Mata's many inverse matrix functions.
+</p>
+<div class="mw-highlight mw-highlight-lang-stata mw-content-ltr" dir="ltr"><pre><span></span>.<span class="k"> mata</span>:
+
+: A = (<span class="m">1</span>,<span class="m">2</span>,<span class="m">3</span>) \(<span class="m">4</span>,<span class="m">5</span>,<span class="m">6</span>)
+
+: A
+       <span class="m">1</span>   <span class="m">2</span>   <span class="m">3</span>
+    <span class="o">+-------------+</span>
+  <span class="m">1</span> |  <span class="m">1</span>   <span class="m">2</span>   <span class="m">3</span>  |
+  <span class="m">2</span> |  <span class="m">4</span>   <span class="m">5</span>   <span class="m">6</span>  |
+    <span class="o">+-------------+</span>
+
+: B = (<span class="m">2</span>..<span class="m">4</span>) \(<span class="m">1</span>..<span class="m">3</span>)
+
+: B
+       <span class="m">1</span>   <span class="m">2</span>   <span class="m">3</span>
+    <span class="o">+-------------+</span>
+  <span class="m">1</span> |  <span class="m">2</span>   <span class="m">3</span>   <span class="m">4</span>  |
+  <span class="m">2</span> |  <span class="m">1</span>   <span class="m">2</span>   <span class="m">3</span>  |
+    <span class="o">+-------------+</span>
+
+: C = <span class="nf">J</span>(<span class="m">3</span>,<span class="m">2</span>,<span class="m">1</span>)           <span class="c1">// A 3 by 2 matrix of ones</span>
+
+: C
+       <span class="m">1</span>   <span class="m">2</span>
+    <span class="o">+---------+</span>
+  <span class="m">1</span> |  <span class="m">1</span>   <span class="m">1</span>  |
+  <span class="m">2</span> |  <span class="m">1</span>   <span class="m">1</span>  |
+  <span class="m">3</span> |  <span class="m">1</span>   <span class="m">1</span>  |
+    <span class="o">+---------+</span>
+
+: D = A <span class="o">+</span> B
+
+: D
+       <span class="m">1</span>   <span class="m">2</span>   <span class="m">3</span>
+    <span class="o">+-------------+</span>
+  <span class="m">1</span> |  <span class="m">3</span>   <span class="m">5</span>   <span class="m">7</span>  |
+  <span class="m">2</span> |  <span class="m">5</span>   <span class="m">7</span>   <span class="m">9</span>  |
+    <span class="o">+-------------+</span>
+
+: E = A<span class="o">*</span>C
+
+: E
+        <span class="m">1</span>    <span class="m">2</span>
+    <span class="o">+-----------+</span>
+  <span class="m">1</span> |   <span class="m">6</span>    <span class="m">6</span>  |
+  <span class="m">2</span> |  <span class="m">15</span>   <span class="m">15</span>  |
+    <span class="o">+-----------+</span>
+
+: F = A:<span class="o">*</span>B
+
+: F
+        <span class="m">1</span>    <span class="m">2</span>    <span class="m">3</span>
+    <span class="o">+----------------+</span>
+  <span class="m">1</span> |   <span class="m">2</span>    <span class="m">6</span>   <span class="m">12</span>  |
+  <span class="m">2</span> |   <span class="m">4</span>   <span class="m">10</span>   <span class="m">18</span>  |
+    <span class="o">+----------------+</span>
+
+: G = E :<span class="o">+</span> <span class="m">3</span>
+
+: G
+        <span class="m">1</span>    <span class="m">2</span>
+    <span class="o">+-----------+</span>
+  <span class="m">1</span> |   <span class="m">9</span>    <span class="m">9</span>  |
+  <span class="m">2</span> |  <span class="m">18</span>   <span class="m">18</span>  |
+    <span class="o">+-----------+</span>
+
+: H = F[(<span class="m">2</span>\<span class="m">1</span>), (<span class="m">1</span>, <span class="m">2</span>)]    <span class="c1">// Subscripting to get a submatrix of F and</span>
+
+:                         <span class="c1">// switch row 1 and 2</span>
+: H
+        <span class="m">1</span>    <span class="m">2</span>
+    <span class="o">+-----------+</span>
+  <span class="m">1</span> |   <span class="m">4</span>   <span class="m">10</span>  |
+  <span class="m">2</span> |   <span class="m">2</span>    <span class="m">6</span>  |
+    <span class="o">+-----------+</span>
+
+: I = <span class="nf">invsym</span>(F&#39;<span class="o">*</span>F)        <span class="c1">// Generalized inverse (F*F^(-1)F=F) of a</span>
+
+:                         <span class="c1">// symmetric positive semi-definite matrix</span>
+: I
+[symmetric]
+                 <span class="m">1</span>             <span class="m">2</span>             <span class="m">3</span>
+    <span class="o">+-------------------------------------------+</span>
+  <span class="m">1</span> |            <span class="m">0</span>                              |
+  <span class="m">2</span> |            <span class="m">0</span>          <span class="m">3.25</span>                |
+  <span class="m">3</span> |            <span class="m">0</span>         <span class="o">-</span><span class="m">1.75</span>   .<span class="m">9444444444</span>  |
+    <span class="o">+-------------------------------------------+</span>
+
+:<span class="k"> end</span>
+</pre></div>
+<h4><span class="mw-headline" id="MATLAB">MATLAB</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=11" title="Edit section: MATLAB">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The implementation in <a href="/wiki/MATLAB" title="MATLAB">MATLAB</a> allows the same economy allowed by using the <a href="/wiki/Fortran" title="Fortran">Fortran</a> language.
+</p>
+<div class="mw-highlight mw-highlight-lang-matlab mw-content-ltr" dir="ltr"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">;</span>
+</pre></div>
+<p>A variant of the MATLAB language is the <a href="/wiki/GNU_Octave" title="GNU Octave">GNU Octave</a> language, which extends the original language with <a href="/wiki/Augmented_assignment" title="Augmented assignment">augmented assignments</a>:
+</p>
+<div class="mw-highlight mw-highlight-lang-octave mw-content-ltr" dir="ltr"><pre><span></span><span class="n">A</span> <span class="o">+=</span> <span class="n">B</span><span class="p">;</span>
+</pre></div>
+<p>Both MATLAB and GNU Octave natively support linear algebra operations such as matrix multiplication, <a href="/wiki/Matrix_inversion" class="mw-redirect" title="Matrix inversion">matrix inversion</a>, and the numerical solution of <a href="/wiki/System_of_linear_equations" title="System of linear equations">system of linear equations</a>, even using the <a href="/wiki/Moore%E2%80%93Penrose_pseudoinverse" class="mw-redirect" title="Moore–Penrose pseudoinverse">Moore–Penrose pseudoinverse</a>.<sup id="cite_ref-7" class="reference"><a href="#cite_note-7">&#91;7&#93;</a></sup><sup id="cite_ref-8" class="reference"><a href="#cite_note-8">&#91;8&#93;</a></sup>
+</p><p>The <a href="/wiki/Nial" title="Nial">Nial</a> example of the inner product of two arrays can be implemented using the native matrix multiplication operator. If <code>a</code> is a row vector of size [1 n] and <code>b</code> is a corresponding column vector of size [n 1].
+</p>
+<pre>a * b;
+</pre>
+<p>The inner product between two matrices having the same number of elements can be implemented with the auxiliary operator <code>(:)</code>, which reshapes a given matrix into a column vector, and the <a href="/wiki/Transpose" title="Transpose">transpose</a> operator <code>'</code>:
+</p>
+<pre>A(:)' * B(:);
+</pre>
+<h4><span class="mw-headline" id="rasql">rasql</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=12" title="Edit section: rasql">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The <a href="/wiki/Rasdaman#Raster_Query_Language" title="Rasdaman">rasdaman query language</a> is a database-oriented array-programming language. For example, two arrays could be added with the following query:
+</p>
+<pre>SELECT A + B
+FROM   A, B
+</pre>
+<h4><span class="mw-headline" id="R">R</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=13" title="Edit section: R">edit</a><span class="mw-editsection-bracket">]</span></span></h4>
+<p>The <a href="/wiki/R_(programming_language)" title="R (programming language)">R</a> language supports <a href="/w/index.php?title=Array_paradigm&amp;action=edit&amp;redlink=1" class="new" title="Array paradigm (page does not exist)">array paradigm</a> by default. The following example illustrates a process of multiplication of two matrices followed by an addition of a scalar (which is, in fact, a one-element vector) and a vector:
+</p>
+<div class="mw-highlight mw-highlight-lang-r mw-content-ltr" dir="ltr"><pre><span></span><span class="o">&gt;</span> <span class="n">A</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>                              <span class="o">!!</span><span class="n">this</span> <span class="n">has</span> <span class="n">nrow</span><span class="o">=</span><span class="m">2</span> <span class="kc">...</span> <span class="n">and</span> <span class="n">A</span> <span class="n">has</span> <span class="m">2</span> <span class="n">rows</span>
+<span class="o">&gt;</span> <span class="n">A</span>
+     <span class="n">[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span> <span class="n">[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span> <span class="n">[</span><span class="p">,</span><span class="m">3</span><span class="n">]</span>
+<span class="n">[1</span><span class="p">,</span><span class="n">]</span>    <span class="m">1</span>    <span class="m">3</span>    <span class="m">5</span>
+<span class="n">[2</span><span class="p">,</span><span class="n">]</span>    <span class="m">2</span>    <span class="m">4</span>    <span class="m">6</span>
+<span class="o">&gt;</span> <span class="n">B</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">6</span><span class="o">:</span><span class="m">1</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="p">)</span>  <span class="c1"># t() is a transpose operator                           !!this has nrow=2 ... and B has 3 rows --- a clear contradiction to the definition of A</span>
+<span class="o">&gt;</span> <span class="n">B</span>
+     <span class="n">[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span> <span class="n">[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span>
+<span class="n">[1</span><span class="p">,</span><span class="n">]</span>    <span class="m">6</span>    <span class="m">5</span>
+<span class="n">[2</span><span class="p">,</span><span class="n">]</span>    <span class="m">4</span>    <span class="m">3</span>
+<span class="n">[3</span><span class="p">,</span><span class="n">]</span>    <span class="m">2</span>    <span class="m">1</span>
+<span class="o">&gt;</span> <span class="n">C</span> <span class="o">&lt;-</span> <span class="n">A</span> <span class="o">%*%</span> <span class="n">B</span>
+<span class="o">&gt;</span> <span class="n">C</span>
+     <span class="n">[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span> <span class="n">[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span>
+<span class="n">[1</span><span class="p">,</span><span class="n">]</span>   <span class="m">28</span>   <span class="m">19</span>
+<span class="n">[2</span><span class="p">,</span><span class="n">]</span>   <span class="m">40</span>   <span class="m">28</span>
+<span class="o">&gt;</span> <span class="n">D</span> <span class="o">&lt;-</span> <span class="n">C</span> <span class="o">+</span> <span class="m">1</span>
+<span class="o">&gt;</span> <span class="n">D</span>
+     <span class="n">[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span> <span class="n">[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span>
+<span class="n">[1</span><span class="p">,</span><span class="n">]</span>   <span class="m">29</span>   <span class="m">20</span>
+<span class="n">[2</span><span class="p">,</span><span class="n">]</span>   <span class="m">41</span>   <span class="m">29</span>
+<span class="o">&gt;</span> <span class="n">D</span> <span class="o">+</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>  <span class="c1"># c() creates a vector</span>
+     <span class="n">[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span> <span class="n">[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span>
+<span class="n">[1</span><span class="p">,</span><span class="n">]</span>   <span class="m">30</span>   <span class="m">21</span>
+<span class="n">[2</span><span class="p">,</span><span class="n">]</span>   <span class="m">42</span>   <span class="m">30</span>
+</pre></div>
+<h2><span class="mw-headline" id="Mathematical_reasoning_and_language_notation">Mathematical reasoning and language notation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=14" title="Edit section: Mathematical reasoning and language notation">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The matrix left-division operator concisely expresses some semantic properties of matrices. As in the scalar equivalent, if the (<a href="/wiki/Determinant" title="Determinant">determinant</a> of the) coefficient (matrix) <code>A</code> is not null then it is possible to solve the (vectorial) equation <code>A * x = b</code> by left-multiplying both sides by the <a href="/wiki/Matrix_inversion" class="mw-redirect" title="Matrix inversion">inverse</a> of <code>A</code>: <code>A<sup>−1</sup></code> (in both MATLAB and GNU Octave languages: <code>A^-1</code>). The following mathematical statements hold when <code>A</code> is a <a href="/wiki/Matrix_rank#Properties" class="mw-redirect" title="Matrix rank">full rank</a> <a href="/wiki/Square_matrix#Square_matrices" title="Square matrix">square matrix</a>:
+</p>
+<dl><dd><code>A^-1  *(A * x)==A^-1 * (b)</code></dd>
+<dd><code>(A^-1 * A)* x ==A^-1 *  b </code> &#160; &#160; &#160; (matrix-multiplication <a href="/wiki/Associativity" class="mw-redirect" title="Associativity">associativity</a>)</dd>
+<dd><code>x = A^-1 * b</code></dd></dl>
+<p>where <code>==</code> is the equivalence <a href="/wiki/Relational_operator" title="Relational operator">relational operator</a>.
+The previous statements are also valid MATLAB expressions if the third one is executed before the others (numerical comparisons may be false because of round-off errors).
+</p><p>If the system is overdetermined - so that <code>A</code> has more rows than columns - the pseudoinverse <code>A<sup>+</sup></code> (in MATLAB and GNU Octave languages: <code>pinv(A)</code>) can replace the inverse <code>A<sup>−1</sup></code>, as follows:
+</p>
+<dl><dd><code>pinv(A)  *(A * x)==pinv(A) * (b)</code></dd>
+<dd><code>(pinv(A) * A)* x ==pinv(A) * b</code> &#160; &#160; &#160; (matrix-multiplication associativity)</dd>
+<dd><code>x = pinv(A) * b</code></dd></dl>
+<p>However, these solutions are neither the most concise ones (e.g. still remains the need to notationally differentiate overdetermined systems) nor the most computationally efficient.  The latter point is easy to understand when considering again the scalar equivalent <code>a * x = b</code>, for which the solution <code>x = a^-1 * b</code> would require two operations instead of the more efficient <code>x = b / a</code>.
+The problem is that generally matrix multiplications are not <a href="/wiki/Commutativity" class="mw-redirect" title="Commutativity">commutative</a> as the extension of the scalar solution to the matrix case would require:
+</p>
+<dl><dd><code>(a * x)/ a ==b / a</code></dd>
+<dd><code>(x * a)/ a ==b / a</code> &#160; &#160; &#160; (commutativity does not hold for matrices!)</dd>
+<dd><code>x * (a / a)==b / a</code> &#160; &#160; &#160; (associativity also holds for matrices)</dd>
+<dd><code>x = b / a</code></dd></dl>
+<p>The MATLAB language introduces the left-division operator <code>\</code> to maintain the essential part of the analogy with the scalar case, therefore simplifying the mathematical reasoning and preserving the conciseness:
+</p>
+<dl><dd><code>A \ (A * x)==A \ b</code></dd>
+<dd><code>(A \ A)* x ==A \ b</code> &#160; &#160; &#160; (associativity also holds for matrices, commutativity is no more required)</dd>
+<dd><code>x = A \ b</code></dd></dl>
+<p>This is not only an example of terse array programming from the coding point of view but also from the computational efficiency perspective, which in several array programming languages benefits from quite efficient linear algebra libraries such as <a href="/wiki/Automatically_Tuned_Linear_Algebra_Software" title="Automatically Tuned Linear Algebra Software">ATLAS</a> or <a href="/wiki/LAPACK" title="LAPACK">LAPACK</a>.<sup id="cite_ref-9" class="reference"><a href="#cite_note-9">&#91;9&#93;</a></sup><sup id="cite_ref-10" class="reference"><a href="#cite_note-10">&#91;10&#93;</a></sup>
+</p><p>
+Returning to the previous quotation of Iverson, the rationale behind it should now be evident: <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r886047036"/></p><blockquote class="templatequote"><p>it is important to distinguish the difficulty of describing and of learning a piece of notation from the difficulty of mastering its implications. For example, learning the rules for computing a matrix product is easy, but a mastery of its implications (such as its associativity, its distributivity over addition, and its ability to represent linear functions and geometric operations) is a different and much more difficult matter.
+Indeed, the very suggestiveness of a notation may make it seem harder to learn because of the many properties it suggests for explorations.</p></blockquote>
+<h2><span class="mw-headline" id="Third-party_libraries">Third-party libraries</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=15" title="Edit section: Third-party libraries">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The use of specialized and efficient libraries to provide more terse abstractions is also common in other programming languages. In <a href="/wiki/C%2B%2B" title="C++">C++</a> several linear algebra libraries exploit the language's ability to <a href="/wiki/Operator_overloading" title="Operator overloading">overload operators</a>. In some cases a very terse abstraction in those languages is explicitly influenced by the array programming paradigm, as the <a href="/wiki/Armadillo_(C%2B%2B_library)" title="Armadillo (C++ library)">Armadillo</a> and <a href="/wiki/Blitz%2B%2B" title="Blitz++">Blitz++</a> libraries do.<sup id="cite_ref-11" class="reference"><a href="#cite_note-11">&#91;11&#93;</a></sup><sup id="cite_ref-12" class="reference"><a href="#cite_note-12">&#91;12&#93;</a></sup>
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=16" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/Array_slicing" title="Array slicing">Array slicing</a></li>
+<li><a href="/wiki/List_of_programming_languages_by_type#Array_languages" title="List of programming languages by type">List of array programming languages</a></li></ul>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=17" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-1">^</a></b></span> <span class="reference-text"><cite id="CITEREFStéfan_van_der_WaltS._Chris_ColbertGaël_Varoquaux2011" class="citation journal">Stéfan van der Walt; S. Chris Colbert &amp; Gaël Varoquaux (2011). "The NumPy array: a structure for efficient numerical computation". <i>Computing in Science and Engineering</i>. IEEE. <b>13</b> (2): 22–30. <a href="/wiki/ArXiv_(identifier)" class="mw-redirect" title="ArXiv (identifier)">arXiv</a>:<span class="cs1-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="//arxiv.org/abs/1102.1523">1102.1523</a></span>. <a href="/wiki/Bibcode_(identifier)" class="mw-redirect" title="Bibcode (identifier)">Bibcode</a>:<a rel="nofollow" class="external text" href="https://ui.adsabs.harvard.edu/abs/2011CSE....13b..22V">2011CSE....13b..22V</a>. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1109%2Fmcse.2011.37">10.1109/mcse.2011.37</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Computing+in+Science+and+Engineering&amp;rft.atitle=The+NumPy+array%3A+a+structure+for+efficient+numerical+computation&amp;rft.volume=13&amp;rft.issue=2&amp;rft.pages=22-30&amp;rft.date=2011&amp;rft_id=info%3Aarxiv%2F1102.1523&amp;rft_id=info%3Adoi%2F10.1109%2Fmcse.2011.37&amp;rft_id=info%3Abibcode%2F2011CSE....13b..22V&amp;rft.au=St%C3%A9fan+van+der+Walt&amp;rft.au=S.+Chris+Colbert&amp;rft.au=Ga%C3%ABl+Varoquaux&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><style data-mw-deduplicate="TemplateStyles:r951705291">.mw-parser-output cite.citation{font-style:inherit}.mw-parser-output .citation q{quotes:"\"""\"""'""'"}.mw-parser-output .id-lock-free a,.mw-parser-output .citation .cs1-lock-free a{background-image:url("//upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lock-green.svg/9px-Lock-green.svg.png");background-image:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg");background-repeat:no-repeat;background-size:9px;background-position:right .1em center}.mw-parser-output .id-lock-limited a,.mw-parser-output .id-lock-registration a,.mw-parser-output .citation .cs1-lock-limited a,.mw-parser-output .citation .cs1-lock-registration a{background-image:url("//upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Lock-gray-alt-2.svg/9px-Lock-gray-alt-2.svg.png");background-image:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg");background-repeat:no-repeat;background-size:9px;background-position:right .1em center}.mw-parser-output .id-lock-subscription a,.mw-parser-output .citation .cs1-lock-subscription a{background-image:url("//upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Lock-red-alt-2.svg/9px-Lock-red-alt-2.svg.png");background-image:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg");background-repeat:no-repeat;background-size:9px;background-position:right .1em center}.mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration{color:#555}.mw-parser-output .cs1-subscription span,.mw-parser-output .cs1-registration span{border-bottom:1px dotted;cursor:help}.mw-parser-output .cs1-ws-icon a{background-image:url("//upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Wikisource-logo.svg/12px-Wikisource-logo.svg.png");background-image:linear-gradient(transparent,transparent),url("//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg");background-repeat:no-repeat;background-size:12px;background-position:right .1em center}.mw-parser-output code.cs1-code{color:inherit;background:inherit;border:inherit;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;font-size:100%}.mw-parser-output .cs1-visible-error{font-size:100%}.mw-parser-output .cs1-maint{display:none;color:#33aa33;margin-left:0.3em}.mw-parser-output .cs1-subscription,.mw-parser-output .cs1-registration,.mw-parser-output .cs1-format{font-size:95%}.mw-parser-output .cs1-kern-left,.mw-parser-output .cs1-kern-wl-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right,.mw-parser-output .cs1-kern-wl-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}</style></span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-2">^</a></b></span> <span class="reference-text"><cite id="CITEREFIverson,_K._E.1980" class="citation journal"><a href="/wiki/Kenneth_E._Iverson" title="Kenneth E. Iverson">Iverson, K. E.</a> (1980). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20130920071911/http://www.jsoftware.com/papers/tot.htm">"Notations as a Tool of Thought"</a>. <i>Communications of the ACM</i>. <b>23</b> (8): 444–465. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<span class="cs1-lock-free" title="Freely accessible"><a rel="nofollow" class="external text" href="https://doi.org/10.1145%2F358896.358899">10.1145/358896.358899</a></span>. Archived from <a rel="nofollow" class="external text" href="http://www.jsoftware.com/papers/tot.htm">the original</a> on 2013-09-20<span class="reference-accessdate">. Retrieved <span class="nowrap">2011-03-22</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Communications+of+the+ACM&amp;rft.atitle=Notations+as+a+Tool+of+Thought.&amp;rft.volume=23&amp;rft.issue=8&amp;rft.pages=444-465&amp;rft.date=1980&amp;rft_id=info%3Adoi%2F10.1145%2F358896.358899&amp;rft.au=Iverson%2C+K.+E.&amp;rft_id=http%3A%2F%2Fwww.jsoftware.com%2Fpapers%2Ftot.htm&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-3">^</a></b></span> <span class="reference-text"><cite id="CITEREFSurana_P2006" class="citation journal">Surana P (2006). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20150217154926/http://lispnyc.org/meeting-assets/2007-02-13_pinku/SuranaThesis.pdf">"Meta-Compilation of Language Abstractions"</a> <span class="cs1-format">(PDF)</span>. Archived from <a rel="nofollow" class="external text" href="ftp://lispnyc.org/meeting-assets/2007-02-13_pinku/SuranaThesis.pdf">the original</a> <span class="cs1-format">(PDF)</span> on 2015-02-17<span class="reference-accessdate">. Retrieved <span class="nowrap">2008-03-17</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=Meta-Compilation+of+Language+Abstractions.&amp;rft.date=2006&amp;rft.au=Surana+P&amp;rft_id=ftp%3A%2F%2Flispnyc.org%2Fmeeting-assets%2F2007-02-13_pinku%2FSuranaThesis.pdf&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span> <span class="cs1-hidden-error error citation-comment">Cite journal requires <code class="cs1-code">&#124;journal=</code> (<a href="/wiki/Help:CS1_errors#missing_periodical" title="Help:CS1 errors">help</a>)</span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><b><a href="#cite_ref-4">^</a></b></span> <span class="reference-text"><cite id="CITEREFKuketayev" class="citation web">Kuketayev. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20090111091710/http://www.adtmag.com/joop/article.aspx?id=4597">"The Data Abstraction Penalty (DAP) Benchmark for Small Objects in Java"</a>. Archived from <a rel="nofollow" class="external text" href="http://www.adtmag.com/joop/article.aspx?id=4597">the original</a> on 2009-01-11<span class="reference-accessdate">. Retrieved <span class="nowrap">2008-03-17</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=The+Data+Abstraction+Penalty+%28DAP%29+Benchmark+for+Small+Objects+in+Java.&amp;rft.au=Kuketayev&amp;rft_id=http%3A%2F%2Fwww.adtmag.com%2Fjoop%2Farticle.aspx%3Fid%3D4597&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><b><a href="#cite_ref-5">^</a></b></span> <span class="reference-text"><cite id="CITEREFChatzigeorgiouStephanides2002" class="citation book">Chatzigeorgiou; Stephanides (2002). "Evaluating Performance and Power Of Object-Oriented Vs. Procedural Programming Languages".  In Blieberger; Strohmeier (eds.). <a rel="nofollow" class="external text" href="https://books.google.com/?id=QMalP1P2kAMC&amp;dq=%22abstraction+penalty%22"><i>Proceedings - 7th International Conference on Reliable Software Technologies - Ada-Europe'2002</i></a>. Springer. p.&#160;367. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-3-540-43784-0" title="Special:BookSources/978-3-540-43784-0"><bdi>978-3-540-43784-0</bdi></a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=Evaluating+Performance+and+Power+Of+Object-Oriented+Vs.+Procedural+Programming+Languages&amp;rft.btitle=Proceedings+-+7th+International+Conference+on+Reliable+Software+Technologies+-+Ada-Europe%272002&amp;rft.pages=367&amp;rft.pub=Springer&amp;rft.date=2002&amp;rft.isbn=978-3-540-43784-0&amp;rft.au=Chatzigeorgiou&amp;rft.au=Stephanides&amp;rft_id=https%3A%2F%2Fbooks.google.com%2F%3Fid%3DQMalP1P2kAMC%26dq%3D%2522abstraction%2Bpenalty%2522&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><b><a href="#cite_ref-6">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://www.adaic.org/standards/05rm/html/RM-TTL.html">Ada Reference Manual</a>: <a rel="nofollow" class="external text" href="http://www.adaic.org/resources/add_content/standards/05rm/html/RM-G-3-1.html">G.3.1 Real Vectors and Matrices</a></span>
+</li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><b><a href="#cite_ref-7">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="https://www.gnu.org/software/octave/doc/interpreter/Arithmetic-Ops.html">"GNU Octave Manual. Arithmetic Operators"</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2011-03-19</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=GNU+Octave+Manual.+Arithmetic+Operators.&amp;rft_id=https%3A%2F%2Fwww.gnu.org%2Fsoftware%2Foctave%2Fdoc%2Finterpreter%2FArithmetic-Ops.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><b><a href="#cite_ref-8">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="http://www.mathworks.com/help/techdoc/ref/arithmeticoperators.html">"MATLAB documentation. Arithmetic Operators"</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2011-03-19</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=MATLAB+documentation.+Arithmetic+Operators.&amp;rft_id=http%3A%2F%2Fwww.mathworks.com%2Fhelp%2Ftechdoc%2Fref%2Farithmeticoperators.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><b><a href="#cite_ref-9">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="https://www.gnu.org/software/octave/doc/interpreter/Installation.html">"GNU Octave Manual. Appendix G Installing Octave"</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2011-03-19</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=GNU+Octave+Manual.+Appendix+G+Installing+Octave.&amp;rft_id=https%3A%2F%2Fwww.gnu.org%2Fsoftware%2Foctave%2Fdoc%2Finterpreter%2FInstallation.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-10"><span class="mw-cite-backlink"><b><a href="#cite_ref-10">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="http://reference.wolfram.com/legacy/v5_2/Built-inFunctions/AdvancedDocumentation/LinearAlgebra/LinearAlgebraInMathematica/Appendix/AdvancedDocumentationLinearAlgebra7.0.html">"Mathematica 5.2 Documentation. Software References"</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2011-03-19</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Mathematica+5.2+Documentation.+Software+References.&amp;rft_id=http%3A%2F%2Freference.wolfram.com%2Flegacy%2Fv5_2%2FBuilt-inFunctions%2FAdvancedDocumentation%2FLinearAlgebra%2FLinearAlgebraInMathematica%2FAppendix%2FAdvancedDocumentationLinearAlgebra7.0.html&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-11"><span class="mw-cite-backlink"><b><a href="#cite_ref-11">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="http://arma.sourceforge.net/docs.html#syntax">"Reference for Armadillo 1.1.8. Examples of Matlab/Octave syntax and conceptually corresponding Armadillo syntax"</a><span class="reference-accessdate">. Retrieved <span class="nowrap">2011-03-19</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Reference+for+Armadillo+1.1.8.+Examples+of+Matlab%2FOctave+syntax+and+conceptually+corresponding+Armadillo+syntax.&amp;rft_id=http%3A%2F%2Farma.sourceforge.net%2Fdocs.html%23syntax&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+<li id="cite_note-12"><span class="mw-cite-backlink"><b><a href="#cite_ref-12">^</a></b></span> <span class="reference-text"><cite class="citation web"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20110323013142/http://www.oonumerics.org/blitz/docs/blitz_3.html#SEC80">"Blitz++ User's Guide. 3. Array Expressions"</a>. Archived from <a rel="nofollow" class="external text" href="http://www.oonumerics.org/blitz/docs/blitz_3.html#SEC80">the original</a> on 2011-03-23<span class="reference-accessdate">. Retrieved <span class="nowrap">2011-03-19</span></span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Blitz%2B%2B+User%27s+Guide.+3.+Array+Expressions.&amp;rft_id=http%3A%2F%2Fwww.oonumerics.org%2Fblitz%2Fdocs%2Fblitz_3.html%23SEC80&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3AArray+programming" class="Z3988"></span><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r951705291"/></span>
+</li>
+</ol></div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Array_programming&amp;action=edit&amp;section=18" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://www.nsl.com/">"No stinking loops" programming</a></li>
+<li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20110227013846/http://www.vector.org.uk/archive/v223/smill222.htm">Discovering Array Languages</a></li>
+<li><a rel="nofollow" class="external text" href="https://easylerning1.blogspot.com/2020/02/what-is-array-.html">what is Array </a></li></ul>
+<div role="navigation" class="navbox" aria-labelledby="Types_of_programming_languages" style="padding:3px"><table class="nowraplinks mw-collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/Template:Types_of_programming_languages" title="Template:Types of programming languages"><abbr title="View this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">v</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:Types_of_programming_languages" title="Template talk:Types of programming languages"><abbr title="Discuss this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">t</abbr></a></li><li class="nv-edit"><a class="external text" href="https://en.wikipedia.org/w/index.php?title=Template:Types_of_programming_languages&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">e</abbr></a></li></ul></div><div id="Types_of_programming_languages" style="font-size:114%;margin:0 4em"><a href="/wiki/Programming_paradigm" title="Programming paradigm">Types of programming languages</a></div></th></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Actor_model" title="Actor model">Actor-based</a></li>
+<li><a class="mw-selflink selflink">Array</a></li>
+<li><a href="/wiki/Aspect-oriented_programming" title="Aspect-oriented programming">Aspect-oriented</a></li>
+<li><a href="/wiki/Class-based_programming" title="Class-based programming">Class-based</a></li>
+<li><a href="/wiki/Concatenative_programming_language" title="Concatenative programming language">Concatenative</a></li>
+<li><a href="/wiki/Concurrent_computing" title="Concurrent computing">Concurrent</a></li>
+<li><a href="/wiki/Dataflow_programming" title="Dataflow programming">Dataflow</a></li>
+<li><a href="/wiki/Declarative_programming" title="Declarative programming">Declarative</a></li>
+<li><a href="/wiki/Domain-specific_language" title="Domain-specific language">Domain-specific</a></li>
+<li><a href="/wiki/Dynamic_programming_language" title="Dynamic programming language">Dynamic</a></li>
+<li><a href="/wiki/Esoteric_programming_language" title="Esoteric programming language">Esoteric</a></li>
+<li><a href="/wiki/Event-driven_programming" title="Event-driven programming">Event-driven</a></li>
+<li><a href="/wiki/Extensible_programming" title="Extensible programming">Extensible</a></li>
+<li><a href="/wiki/Functional_programming" title="Functional programming">Functional</a></li>
+<li><a href="/wiki/Imperative_programming" title="Imperative programming">Imperative</a></li>
+<li><a href="/wiki/Logic_programming" title="Logic programming">Logic</a></li>
+<li><a href="/wiki/Macro_(computer_science)" title="Macro (computer science)">Macro</a></li>
+<li><a href="/wiki/Metaprogramming" title="Metaprogramming">Metaprogramming</a></li>
+<li><a href="/wiki/Multi-paradigm_programming_language" class="mw-redirect" title="Multi-paradigm programming language">Multi-paradigm</a></li>
+<li><a href="/wiki/Object-based_language" title="Object-based language">Object-based</a></li>
+<li><a href="/wiki/Object-oriented_programming" title="Object-oriented programming">Object-oriented</a></li>
+<li><a href="/wiki/Pipeline_programming" class="mw-redirect" title="Pipeline programming">Pipeline</a></li>
+<li><a href="/wiki/Procedural_programming" title="Procedural programming">Procedural</a></li>
+<li><a href="/wiki/Prototype-based_programming" title="Prototype-based programming">Prototype-based</a></li>
+<li><a href="/wiki/Reflection_(computer_programming)" title="Reflection (computer programming)">Reflective</a></li>
+<li><a href="/wiki/Rule-based_system" title="Rule-based system">Rule-based</a></li>
+<li><a href="/wiki/Scripting_language" title="Scripting language">Scripting</a></li>
+<li><a href="/wiki/Stack-based_language" class="mw-redirect" title="Stack-based language">Stack based</a></li>
+<li><a href="/wiki/Synchronous_programming_language" title="Synchronous programming language">Synchronous</a></li>
+<li><a href="/wiki/Tactile_programming_language" title="Tactile programming language">Tactile</a></li>
+<li><a href="/wiki/Templating_language" class="mw-redirect" title="Templating language">Templating</a></li></ul>
+</div></td></tr><tr><td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Assembly_language" title="Assembly language">Assembly</a></li>
+<li><a href="/wiki/Compiled_language" title="Compiled language">Compiled</a></li>
+<li><a href="/wiki/Interpreted_language" title="Interpreted language">Interpreted</a></li>
+<li><a href="/wiki/Machine_code" title="Machine code">Machine</a></li></ul>
+</div></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Low-level_programming_language" title="Low-level programming language">Low-level</a></li>
+<li><a href="/wiki/High-level_programming_language" title="High-level programming language">High-level</a></li>
+<li><a href="/wiki/Very_high-level_programming_language" title="Very high-level programming language">Very high-level</a></li></ul>
+</div></td></tr><tr><td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/First-generation_programming_language" title="First-generation programming language">First generation</a></li>
+<li><a href="/wiki/Second-generation_programming_language" title="Second-generation programming language">Second generation</a></li>
+<li><a href="/wiki/Third-generation_programming_language" title="Third-generation programming language">Third generation</a></li>
+<li><a href="/wiki/Fourth-generation_programming_language" title="Fourth-generation programming language">Fourth generation</a></li>
+<li><a href="/wiki/Fifth-generation_programming_language" title="Fifth-generation programming language">Fifth generation</a></li></ul>
+</div></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Non-English-based_programming_languages" title="Non-English-based programming languages">Non-English-based</a></li>
+<li><a href="/wiki/Visual_programming_language" title="Visual programming language">Visual</a></li></ul>
+</div></td></tr></tbody></table></div>
+<!-- 
+NewPP limit report
+Parsed by mw1357
+Cached time: 20200424182730
+Cache expiry: 2592000
+Dynamic content: false
+Complications: [vary‐revision‐sha1]
+CPU time usage: 0.252 seconds
+Real time usage: 0.333 seconds
+Preprocessor visited node count: 950/1000000
+Post‐expand include size: 47013/2097152 bytes
+Template argument size: 2224/2097152 bytes
+Highest expansion depth: 8/40
+Expensive parser function count: 0/500
+Unstrip recursion depth: 1/20
+Unstrip post‐expand size: 59361/5000000 bytes
+Number of Wikibase entities loaded: 0/400
+Lua time usage: 0.115/10.000 seconds
+Lua memory usage: 3.66 MB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  259.232      1 -total
+ 63.78%  165.351      1 Template:Reflist
+ 43.51%  112.798      3 Template:Cite_journal
+ 13.77%   35.688      1 Template:Programming_paradigms
+ 12.34%   31.977      1 Template:Sidebar
+ 10.60%   27.471      7 Template:Cite_web
+ 10.25%   26.571      2 Template:Quote
+  6.33%   16.420      1 Template:Programming_language
+  3.98%   10.314      1 Template:Navbox
+  2.71%    7.013      1 Template:Cite_book
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:890887-0!canonical and timestamp 20200424182809 and revision id 952912281
+ -->
+</div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>
+		<div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Array_programming&amp;oldid=952912281">https://en.wikipedia.org/w/index.php?title=Array_programming&amp;oldid=952912281</a>"</div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Array_programming_languages" title="Category:Array programming languages">Array programming languages</a></li><li><a href="/wiki/Category:Programming_paradigms" title="Category:Programming paradigms">Programming paradigms</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:Pages_using_deprecated_source_tags" title="Category:Pages using deprecated source tags">Pages using deprecated source tags</a></li><li><a href="/wiki/Category:CS1_errors:_missing_periodical" title="Category:CS1 errors: missing periodical">CS1 errors: missing periodical</a></li><li><a href="/wiki/Category:Articles_with_example_MATLAB/Octave_code" title="Category:Articles with example MATLAB/Octave code">Articles with example MATLAB/Octave code</a></li><li><a href="/wiki/Category:Articles_with_example_BASIC_code" title="Category:Articles with example BASIC code">Articles with example BASIC code</a></li><li><a href="/wiki/Category:Articles_with_example_Ada_code" title="Category:Articles with example Ada code">Articles with example Ada code</a></li><li><a href="/wiki/Category:Articles_with_example_R_code" title="Category:Articles with example R code">Articles with example R code</a></li></ul></div></div>
+		<div class="visualClear"></div>
+		
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		
+<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+	<h3 id="p-personal-label">Personal tools</h3>
+	<ul >
+		<li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Array+programming" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Array+programming" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+		<div id="left-navigation">
+			<div id="p-namespaces" role="navigation" class="vectorTabs " aria-labelledby="p-namespaces-label">
+	<h3 id="p-namespaces-label">Namespaces</h3>
+	<ul >
+		<li id="ca-nstab-main" class="selected"><a href="/wiki/Array_programming" title="View the content page [c]" accesskey="c">Article</a></li><li id="ca-talk"><a href="/wiki/Talk:Array_programming" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t">Talk</a></li>
+	</ul>
+</div>
+
+			<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+	<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label">
+		<span>Variants</span>
+	</h3>
+	<ul class="menu" >
+		
+	</ul>
+</div>
+
+		</div>
+		<div id="right-navigation">
+			<div id="p-views" role="navigation" class="vectorTabs " aria-labelledby="p-views-label">
+	<h3 id="p-views-label">Views</h3>
+	<ul >
+		<li id="ca-view" class="collapsible selected"><a href="/wiki/Array_programming">Read</a></li><li id="ca-edit" class="collapsible"><a href="/w/index.php?title=Array_programming&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li><li id="ca-history" class="collapsible"><a href="/w/index.php?title=Array_programming&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></li>
+	</ul>
+</div>
+
+			<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+	<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label">
+		<span>More</span>
+	</h3>
+	<ul class="menu" >
+		
+	</ul>
+</div>
+
+			<div id="p-search" role="search">
+	<h3 >
+		<label for="searchInput">Search</label>
+	</h3>
+	<form action="/w/index.php" id="searchform">
+		<div id="simpleSearch">
+			<input type="search" name="search" placeholder="Search Wikipedia" title="Search Wikipedia [f]" accesskey="f" id="searchInput"/>
+			<input type="hidden" value="Special:Search" name="title"/>
+			<input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/>
+			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>
+		</div>
+	</form>
+</div>
+
+		</div>
+	</div>
+	
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a  title="Visit the main page" class="mw-wiki-logo" href="/wiki/Main_Page"></a>
+	</div>
+	<div class="portal" role="navigation" id="p-navigation"  aria-labelledby="p-navigation-label">
+	<h3  id="p-navigation-label">
+		Navigation
+	</h3>
+	<div class="body">
+		<ul><li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-featuredcontent"><a href="/wiki/Wikipedia:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li><li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li><li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikipedia store">Wikipedia store</a></li></ul>
+		
+	</div>
+</div>
+
+
+	<div class="portal" role="navigation" id="p-interaction"  aria-labelledby="p-interaction-label">
+	<h3  id="p-interaction-label">
+		Interaction
+	</h3>
+	<div class="body">
+		<ul><li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact page</a></li></ul>
+		
+	</div>
+</div>
+
+<div class="portal" role="navigation" id="p-tb"  aria-labelledby="p-tb-label">
+	<h3  id="p-tb-label">
+		Tools
+	</h3>
+	<div class="body">
+		<ul><li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Array_programming" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Array_programming" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=Array_programming&amp;oldid=952912281" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=Array_programming&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q4795882" title="Link to connected data repository item [g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Array_programming&amp;id=952912281&amp;wpFormIdentifier=titleform" title="Information on how to cite this page">Cite this page</a></li></ul>
+		
+	</div>
+</div>
+
+<div class="portal" role="navigation" id="p-coll-print_export"  aria-labelledby="p-coll-print_export-label">
+	<h3  id="p-coll-print_export-label">
+		Print/export
+	</h3>
+	<div class="body">
+		<ul><li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Array+programming">Create a book</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Special:ElectronPdf&amp;page=Array+programming&amp;action=show-download-screen">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=Array_programming&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li></ul>
+		
+	</div>
+</div>
+
+<div class="portal" role="navigation" id="p-lang"  aria-labelledby="p-lang-label">
+	<h3  id="p-lang-label">
+		Languages
+	</h3>
+	<div class="body">
+		<ul><li class="interlanguage-link interwiki-lt"><a href="https://lt.wikipedia.org/wiki/Vektorizacija" title="Vektorizacija – Lithuanian" lang="lt" hreflang="lt" class="interlanguage-link-target">Lietuvių</a></li><li class="interlanguage-link interwiki-sr"><a href="https://sr.wikipedia.org/wiki/%D0%90%D0%B3%D0%B5%D0%BD%D1%82%D0%BD%D0%BE_%D0%BD%D0%B8%D0%B7%D0%BD%D0%BE_%D0%BE%D1%80%D0%B8%D1%98%D0%B5%D0%BD%D1%82%D0%B8%D1%81%D0%B0%D0%BD%D0%BE_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B8%D1%80%D0%B0%D1%9A%D0%B5" title="Агентно низно оријентисано програмирање – Serbian" lang="sr" hreflang="sr" class="interlanguage-link-target">Српски / srpski</a></li><li class="interlanguage-link interwiki-vi"><a href="https://vi.wikipedia.org/wiki/L%E1%BA%ADp_tr%C3%ACnh_m%E1%BA%A3ng" title="Lập trình mảng – Vietnamese" lang="vi" hreflang="vi" class="interlanguage-link-target">Tiếng Việt</a></li><li class="interlanguage-link interwiki-zh"><a href="https://zh.wikipedia.org/wiki/%E9%98%B5%E5%88%97%E7%BC%96%E7%A8%8B" title="阵列编程 – Chinese" lang="zh" hreflang="zh" class="interlanguage-link-target">中文</a></li></ul>
+		<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q4795882#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+	</div>
+</div>
+
+
+</div>
+
+</div>
+
+<div id="footer" role="contentinfo" >
+	<ul id="footer-info" class="">
+		<li id="footer-info-lastmod"> This page was last edited on 24 April 2020, at 18:28<span class="anonymous-show">&#160;(UTC)</span>.</li>
+		<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//foundation.wikimedia.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//foundation.wikimedia.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+	</ul>
+	<ul id="footer-places" class="">
+		<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+		<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+		<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+		<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+		<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+		<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+		<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+		<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Array_programming&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+	</ul>
+	<ul id="footer-icons" class="noprint">
+		<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a></li>
+		<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a></li>
+	</ul>
+	<div style="clear: both;"></div>
+</div>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.252","walltime":"0.333","ppvisitednodes":{"value":950,"limit":1000000},"postexpandincludesize":{"value":47013,"limit":2097152},"templateargumentsize":{"value":2224,"limit":2097152},"expansiondepth":{"value":8,"limit":40},"expensivefunctioncount":{"value":0,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":59361,"limit":5000000},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%  259.232      1 -total"," 63.78%  165.351      1 Template:Reflist"," 43.51%  112.798      3 Template:Cite_journal"," 13.77%   35.688      1 Template:Programming_paradigms"," 12.34%   31.977      1 Template:Sidebar"," 10.60%   27.471      7 Template:Cite_web"," 10.25%   26.571      2 Template:Quote","  6.33%   16.420      1 Template:Programming_language","  3.98%   10.314      1 Template:Navbox","  2.71%    7.013      1 Template:Cite_book"]},"scribunto":{"limitreport-timeusage":{"value":"0.115","limit":"10.000"},"limitreport-memusage":{"value":3832956,"limit":52428800}},"cachereport":{"origin":"mw1357","timestamp":"20200424182730","ttl":2592000,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Array programming","url":"https:\/\/en.wikipedia.org\/wiki\/Array_programming","sameAs":"http:\/\/www.wikidata.org\/entity\/Q4795882","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q4795882","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2004-08-10T19:33:06Z","dateModified":"2020-04-24T18:28:09Z","headline":"programming paradigm that generalize operations on scalars to apply transparently to higher-dimensional arrays"}</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":98,"wgHostname":"mw1327"});});</script></body></html>
