@@ -25,11 +25,6 @@ class: inverse, center, middle
 # Apresentação
 
 ---
-# Sobre a Curso-R
-
-&lt;img src="static/professores.png" width="700" style="display: block; margin: auto;" /&gt;
-
----
 # Linha do tempo
 
 &lt;img src="static/linha_do_tempo.png" width="336" style="display: block; margin: auto;" /&gt;
@@ -300,7 +295,7 @@ GET("https://duckduckgo.com")
 
 ```
 #&gt; Response [https://duckduckgo.com/]
-#&gt;   Date: 2020-04-24 23:24
+#&gt;   Date: 2020-04-26 20:45
 #&gt;   Status: 200
 #&gt;   Content-Type: text/html; charset=UTF-8
 #&gt;   Size: 5.42 kB
@@ -352,7 +347,7 @@ GET("https://duckduckgo.com", query = list(q = "R", t = "h_"))
 
 ```
 #&gt; Response [https://duckduckgo.com/?q=R&amp;t=h_]
-#&gt;   Date: 2020-04-24 23:24
+#&gt;   Date: 2020-04-26 20:45
 #&gt;   Status: 200
 #&gt;   Content-Type: text/html; charset=UTF-8
 #&gt;   Size: 26.2 kB
@@ -654,9 +649,9 @@ microbenchmark(
 
 ```
 #&gt; Unit: milliseconds
-#&gt;  expr       min       lq     mean   median       uq      max neval
-#&gt;   seq  8.630773 13.79190 17.49511 17.28082 20.08025 46.08841   100
-#&gt;   par 14.398487 28.10556 32.34163 33.18523 38.11062 58.92204   100
+#&gt;  expr       min        lq      mean    median       uq      max neval
+#&gt;   seq  5.900142  8.244917  9.494649  8.907254 10.26182 22.03491   100
+#&gt;   par 10.688572 12.740904 15.611041 14.081677 17.12673 51.45454   100
 ```
 
 ---
@@ -825,10 +820,10 @@ pjs
 
 ```
 #&gt; $process
-#&gt; PROCESS 'phantomjs', running, pid 157429.
+#&gt; PROCESS 'phantomjs', running, pid 18534.
 #&gt; 
 #&gt; $port
-#&gt; [1] 3297
+#&gt; [1] 3807
 ```
 
 ```r
@@ -846,7 +841,7 @@ ses$go("https://google.com")
 ses$takeScreenshot(file = arq)
 ```
 
-&lt;img src="index_files/figure-html/unnamed-chunk-39-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-38-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 ---
 # Elementos
@@ -889,7 +884,7 @@ ses$takeScreenshot(file = arq)
 ---
 # Exercício (eu)
 
-&lt;img src="index_files/figure-html/unnamed-chunk-41-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-40-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Exercício (nós)
@@ -908,7 +903,7 @@ ses$takeScreenshot(file = arq)
 ---
 # Exercício (nós)
 
-&lt;img src="index_files/figure-html/unnamed-chunk-43-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-42-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Exercício (vocês)
@@ -936,7 +931,7 @@ ses$takeScreenshot(file = arq)
 ---
 # Exercício (vocês)
 
-&lt;img src="index_files/figure-html/unnamed-chunk-45-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-44-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Quer mais?
@@ -982,7 +977,7 @@ drv$client$screenshot(file = arq)
 ---
 # Demonstração
 
-&lt;img src="index_files/figure-html/unnamed-chunk-47-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-46-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 # Mas com o webdriver...
@@ -1009,7 +1004,7 @@ ses$takeScreenshot(file = arq)
 ---
 # Mas com o webdriver...
 
-&lt;img src="index_files/figure-html/unnamed-chunk-49-1.png" width="667" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-48-1.png" width="667" style="display: block; margin: auto;" /&gt;
 
 ---
 class: inverse, center, middle
@@ -1099,7 +1094,7 @@ length(resp$content)
 ```
 
 ```
-#&gt; [1] 16946
+#&gt; [1] 16945
 ```
 
 --
@@ -1126,7 +1121,7 @@ length(resp$content)
 ```
 
 ```
-#&gt; [1] 16946
+#&gt; [1] 16945
 ```
 
 --
@@ -1174,7 +1169,7 @@ length(resp$content)
 ```
 
 ```
-#&gt; [1] 47286
+#&gt; [1] 47284
 ```
 
 --
@@ -1249,7 +1244,7 @@ POST(
 
 ```
 #&gt; Response [https://dejt.jt.jus.br/dejt/f/n/diariocon]
-#&gt;   Date: 2020-04-24 23:26
+#&gt;   Date: 2020-04-26 20:46
 #&gt;   Status: 200
 #&gt;   Content-Type: application/pdf
 #&gt;   Size: 9.46 MB

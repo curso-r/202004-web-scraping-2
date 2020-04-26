@@ -34,13 +34,6 @@ class: inverse, center, middle
 # Apresentação
 
 ---
-# Sobre a Curso-R
-
-```{r, echo=FALSE, dpi = 230, fig.align='center'}
-knitr::include_graphics("static/professores.png")
-```
-
----
 # Linha do tempo
 
 ```{r, echo=FALSE, fig.align='center', dpi=145}
